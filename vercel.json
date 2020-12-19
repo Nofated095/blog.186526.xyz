@@ -1,0 +1,19 @@
+{
+    "routes": [
+        {
+            "src": "/gen_204",
+            "status": 204,
+            "headers": {
+                "204-server": "Cloudflare"
+            },
+            "continue": true
+        },
+        {
+            "src": "/(.*)",
+            "headers": {
+                "Cache-Control": "s-maxage=1209600, max-age=86400, public"
+            },
+            "continue": true
+        }
+    ]
+}
