@@ -100,10 +100,10 @@ nav:
     use: false
     link: /search
   pages:
-    #About:
-      #link: /about/
-    #Friends:
-      #link: /links/
+    "关于":
+      link: /about/
+    "朋友":
+      link: /links/
 
 # SNS Share Switch
 # Used to choose which items will be displayed in share menu.
