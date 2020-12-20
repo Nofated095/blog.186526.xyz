@@ -701,7 +701,7 @@ a.category-link {
 #post-content .highlight span,
 #post-content .highlight code,
 #post-content pre {
-  font-family: 'Fira Code',Consolas, "Panic Sans", "DejaVu Sans Mono",
+  font-family: 'Fira Code','Noto Sans SC',Consolas, "Panic Sans", "DejaVu Sans Mono",
     "Bitstream Vera Sans Mono", Menlo, "Microsoft Yahei", monospace !important;
   /* Override Spectre.css font-family for zh-CN */
 }
