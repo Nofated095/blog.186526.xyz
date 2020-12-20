@@ -74,10 +74,10 @@ uiux:
   # Muilt line slogan is supported.
   slogan: '啥都不会的屑'
   # For most link color except post color
-  link_color:
-  primary_color:
+  link_color: 
+  primary_color: 
   # Background color
-  bg_color:
+  bg_color: 
 
 img:
   avatar: 'https://i.186526.xyz/avatar'
@@ -345,7 +345,7 @@ hanabi:
 #     tab_replace: false
 #
 prettify:
-  enable: true
+  enable: false
   linenumber: true # We prefer to enable for avoiding some pretiffy's bugs.
   # Prettify Theme
   theme: github-v2 # It will not load any theme if you leave it blank
