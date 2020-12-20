@@ -11,23 +11,23 @@ tags:
 
 <!--more-->
 
-## 0.0 debootstrap介绍
+## debootstrap介绍
 
-### 0.1 啥是debootstrap
+### 啥是debootstrap
 
-debootstrap是debian及其附属分支下的一个工具，用来构建一套基本的系统(根文件系统)。生成的目录符合Linux文件系统标准(FHS)，即包含了/boot、/etc、/bin、/usr等等目录，但它比发行版本的Linux体积小很多 
+debootstrap是debian及其附属分支下的一个工具，用来构建一套基本的系统(根文件系统)。生成的目录符合Linux文件系统标准(FHS)，即包含了/boot、/etc、/bin、/usr等等目录，但它比发行版本的Linux体积小很多
 
 ~~似曾相识燕归来~~
 
-### 0.2 debootstrap有啥用
+### debootstrap有啥用
 
 debootstrap可以用来快速 简便的构建一个最小化的debian及其附属分支的最小化rootfs
 
 我们可以用其构建一个最小化的rootfs (主要是这个相较于 Ubuntu Server版本还是小得多)
 
-### 0.3 如何使用debootstrap
+### 如何使用debootstrap
 
-其实 使用debootstrap很简单 他已经被放入到默认源了 我们只需要apt install即可
+其实 使用debootstrap很简单 它已经被放入到默认源了 我们只需要apt install即可
 
 ``` bash
 sudo apt install debootstrap
@@ -39,11 +39,11 @@ sudo apt install debootstrap
 sudo debootstrap [--arch 架构（可选项）][发行版本] [目录] [映像源（可选项）]
 ```
 
-## 1.0 开始动手构建自己的Ubuntu
+## 开始动手构建自己的Ubuntu
 
 我们这里使用Ubuntu Server 20.04作为Live CD来进行构建
 
-### 1.1 进入Shell并安装debootstrap
+### 进入Shell并安装debootstrap
 
 ![Ubuntu ISO shell](https://cdn.jsdelivr.net/gh/186526/jsdelivr@master/img/Ubuntu%20ISO.png)
 
@@ -127,7 +127,7 @@ $ debootstrap
     E: You must specify a suite and a target.
 ```
 
-### 1.2 给硬盘分区
+### 给硬盘分区
 
 这步没啥好说的 用cfdisk进行分区 使用mkfs.ext4来格式化硬盘（请记住如何分区的！！！！（后面编写fstab会涉及到））
 
@@ -160,7 +160,7 @@ mkfs.fat 4.1 (2017-01-24)
 
 ```
 
-### 1.3 挂载分区并释放rootfs
+### 挂载分区并释放rootfs
 
 这里构建选择最新的Focal X86_64位
 
@@ -190,9 +190,9 @@ I: Configuring ca-certificates...
 I: Base system installed successfully. ##当你看到这句时 说明你的操作没有问题
 ```
 
-### 1.4 chroot并进行基本设置
+### chroot并进行基本设置
 
-#### 1.4.1 修改软件源
+#### 修改软件源
 
 默认rootfs中的软件源不完整 我们这里cp一下live cd的软件源
 
@@ -247,7 +247,7 @@ deb http://mirrors.aliyun.com/ubuntu/ focal-security multiverse
 # deb-src http://mirrors.aliyun.com/ubuntu/ focal-security multiverse
 ```
 
-#### 1.4.2 编写fstab
+#### 编写fstab
 
 这里推荐一下这篇文章 [linux之fstab文件详解 来自csdn richerg85](https://blog.csdn.net/richerg85/article/details/17917129)
 
@@ -267,7 +267,7 @@ tmpfs           /tmp    tmpfs   nodev,nosuid            0       0
 /dev/sda3       /       ext4    defaults,noatime        0       0
 ```
 
-#### 1.4.3 chroot进入系统
+#### chroot进入系统
 
 先挂载efi分区
 
@@ -327,7 +327,7 @@ Running in chroot, ignoring request: daemon-reload
 Processing triggers for libc-bin (2.31-0ubuntu9) ...
 ```
 
-#### 1.4.4 安装grub2
+#### 安装grub2
 
 ```bash
 $ grub-install /dev/sda
@@ -343,7 +343,7 @@ Adding boot menu entry for UEFI Firmware Settings
 done
 ```
 
-#### 1.4.5 设置网络
+#### 设置网络
 
 Ubuntu 18.04及其上的Server版本默认使用systemd-networkd联网
 
@@ -375,7 +375,7 @@ Name=*
 DHCP=both
 ```
 
-#### 1.4.6 重启
+#### 重启
 
 ```bash
 $ exit
@@ -386,7 +386,7 @@ reboot
 
 PS: 第一次开机会有一点点慢（就亿点点）
 
-### 1.5 重启并配置网络
+### 重启并配置网络
 
 启动systemd-networkd
 

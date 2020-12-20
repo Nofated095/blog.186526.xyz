@@ -131,3 +131,8 @@ clean_css:
 html_minifier:
   exclude: 
     - "*.html"
+
+node_sass:
+  includePaths:
+    - "node_modules"
+  outputStyle: compressed
