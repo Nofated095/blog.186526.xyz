@@ -97,8 +97,8 @@ nav:
   share:
     use: true
   search:
-    use: false
-    link: /search
+    use: true
+    link: /search/
   pages:
     "关于":
       link: /about/
@@ -280,7 +280,7 @@ valine_counter:
 # Available value of "use":
 #     local | google | swiftype
 search:
-  use: google
+  use: local
   # Swiftype
   swiftype_key:
 
@@ -298,7 +298,7 @@ search:
 #     enable: true
 #
 highlight:
-  theme: github
+  theme: "github"
   # You can only enable the Suka built in prettify theme here. Check the /source/css/highlight directories.
   # The theme name is the css file name without `.min.css`, as [theme-name].min.css
 
@@ -346,7 +346,7 @@ hanabi:
 #
 prettify:
   enable: false
-  linenumber: true # We prefer to enable for avoiding some pretiffy's bugs.
+  linenumber: false # We prefer to enable for avoiding some pretiffy's bugs.
   # Prettify Theme
   theme: github-v2 # It will not load any theme if you leave it blank
   # You can only enable the Suka built in prettify theme here. Check the /source/lib/prettify/themes directories.

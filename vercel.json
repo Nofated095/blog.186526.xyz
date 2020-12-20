@@ -9,6 +9,12 @@
             "continue": true
         },
         {
+            "src": "/",
+            "headers": {
+                "Link":"</css/style.min.css>; rel=preload; as=style"
+            }
+        },
+        {
             "src": "/(.*)",
             "headers": {
                 "Cache-Control": "s-maxage=1209600, max-age=86400, public"

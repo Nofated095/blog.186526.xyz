@@ -47,10 +47,10 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: true
-  tab_replace: false
-  wrap: false
-  hljs: true
+  auto_detect: false
+  tab_replace: ""
+  wrap: true
+  hljs: false
 prismjs:
   enable: false
   preprocess: true
@@ -111,8 +111,8 @@ suka_theme:
     path: search.json
     field: post # Page | Post | All. Default post
   prism:
-    enable: true
-    line_number: true
+    enable: false
+    line_number: false
     theme: default
 
 feed:
@@ -123,3 +123,11 @@ feed:
   content:
   content_limit:
   content_limit_delim: " "
+
+clean_css:
+  exclude: 
+    - "css/style.min.css"
+
+html_minifier:
+  exclude: 
+    - "*.html"

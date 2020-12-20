@@ -32,8 +32,11 @@
   :root {
     --markdown-h1-border: #3c495b !important;
     --card-header: #3c495b !important;
-    --table:transparent !important;
-    --post-footer:#3c495b !important;
+    --table: transparent !important;
+    --post-footer: #3c495b !important;
+    --search: #fff !important;
+    --timeline: #3c496b !important;
+    --time-line-hover: hsla(0, 0%, 100%, 0.86) !important;
   }
   body {
     background-color: #181c27 !important;
@@ -81,7 +84,7 @@
   #disqus_click_btn,
   #disqus-switch-to-direct,
   #disqus-loadmore-button {
-    background: #252d38 !important;
+    background: #3298dc !important;
     border-color: #252d38 !important;
     color: #181c27 !important;
   }
@@ -106,22 +109,20 @@
   #post-content blockquote {
     color: hsla(0, 0%, 100%, 0.86) !important;
   }
-  :not(pre)>code[class*=language-], pre[class*=language-]{
-      background-color: #3c495b !important;
+  .highlight,
+  .code {
+    background-color: #3c495b !important;
+    color: #abb2bf !important;
+    text-shadow: none !important;
   }
-  code[class*=language-], pre[class*=language-]{
-      color:#abb2bf !important;
+  .post-license {
+    background-color: #252d38 !important;
   }
-  code[class*=language-], pre[class*=language-]{
-    text-shadow:none !important;
+  .v[data-class="v"] .vsys,
+  .v[data-class="v"] .vtime {
+    color: hsla(0, 0%, 100%, 0.86) !important;
   }
-  .post-license{
-      background-color: #252d38 !important;
-  }
-  .v[data-class=v] .vsys, .v[data-class=v] .vtime{
-      color:hsla(0, 0%, 100%, 0.86) !important;
-  }
-  .bg-gray{
+  .bg-gray {
     background: #303b49 !important;
   }
 }
@@ -203,10 +204,10 @@ html *::-webkit-scrollbar-thumb {
 }
 
 /**
-   * =========================================================
-   * ************   Menu   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Menu   ************
+     * =========================================================
+     */
 
 .share-menu {
   text-align: left;
@@ -217,10 +218,10 @@ html *::-webkit-scrollbar-thumb {
 }
 
 /**
-   * =========================================================
-   * ************   Icon   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Icon   ************
+     * =========================================================
+     */
 
 /*! Spectre.css Icons v0.5.3 | MIT License | github.com/picturepan2/spectre */
 
@@ -349,10 +350,10 @@ html *::-webkit-scrollbar-thumb {
 }
 
 /**
-   * =========================================================
-   * ************   Header   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Header   ************
+     * =========================================================
+     */
 
 /* Only show on the screen width smaller than or equal to 960px. */
 
@@ -362,13 +363,13 @@ header {
 
 header a {
   color: var(--link);
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 header a:hover,
 header a:focus,
 header a:visited {
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--link);
 }
 
@@ -414,10 +415,10 @@ header .divider {
 }
 
 /**
-   * =========================================================
-   * ************   Main Layout   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Main Layout   ************
+     * =========================================================
+     */
 
 /* Responsive */
 
@@ -470,10 +471,10 @@ header .divider {
 }
 
 /**
-   * =========================================================
-   * ************   Post Entry   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Post Entry   ************
+     * =========================================================
+     */
 
 .post-entry.card {
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
@@ -511,7 +512,7 @@ header .divider {
 .post-entry a.card-title:focus {
   color: var(--link);
   opacity: 1;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .post-entry .post-entry-info {
@@ -550,10 +551,10 @@ header .divider {
 }
 
 /**
-   * =========================================================
-   * ************   Post   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Post   ************
+     * =========================================================
+     */
 
 .post-container {
   width: 100%;
@@ -653,7 +654,7 @@ header .divider {
 }
 
 #post-card .post-header-info-right a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 /* Post Tag/Category List */
@@ -683,7 +684,7 @@ a.post-tags-list-item {
 a.post-tags-list-item:hover,
 a.post-tags-list-item:visited {
   color: var(--tag-item);
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a.post-categories-list-item,
@@ -691,12 +692,12 @@ a.post-categories-list-item:hover,
 a.post-categories-list-item:visited {
   background-color: var(--post-categories-list-item-background);
   color: var(--post-categories-list-item-color) !important;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a.category-link {
   color: var(--category-link);
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 /* Post TOC */
@@ -770,10 +771,10 @@ a.category-link {
 }
 
 /**
-   * =========================================================
-   * ************   Post Content: markdown css   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Post Content: markdown css   ************
+     * =========================================================
+     */
 
 #post-card .card-body {
   padding: 1.2rem 0;
@@ -830,7 +831,7 @@ a.category-link {
 
 #post-content a {
   background-color: transparent;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 #post-content a:hover {
@@ -941,7 +942,7 @@ a.category-link {
 
 #post-content a:not([href]) {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 #post-content .anchor {
@@ -1021,7 +1022,7 @@ a.category-link {
 #post-content h4:hover .anchor,
 #post-content h5:hover .anchor,
 #post-content h6:hover .anchor {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 #post-content h1:hover .anchor .octicon-link,
@@ -1265,10 +1266,10 @@ a.category-link {
 }
 
 /**
-   * =========================================================
-   * ************   Footer   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Footer   ************
+     * =========================================================
+     */
 
 footer {
   padding: 1.5rem 1.2rem 1.2rem;
@@ -1278,7 +1279,7 @@ footer {
 
 .footer-copyright-a,
 .footer-copyright-a:visited {
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--post-hover);
 }
 
@@ -1311,10 +1312,10 @@ footer {
 }
 
 /**
-   * =========================================================
-   * ************   Page: Tagscloud   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Page: Tagscloud   ************
+     * =========================================================
+     */
 
 .tagscloud {
   margin: 0 3rem 3rem;
@@ -1340,7 +1341,7 @@ footer {
 }
 
 .tagscloud a {
-  text-decoration: none;
+  text-decoration: none !important;
   padding: 0.5rem;
   margin: 0.2rem;
   line-height: 2;
@@ -1356,10 +1357,10 @@ footer {
 }
 
 /**
-   * =========================================================
-   * ************   Timeline   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Timeline   ************
+     * =========================================================
+     */
 
 /*! Spectre.css Experimentals v0.5.3 | MIT License | github.com/picturepan2/spectre */
 
@@ -1422,10 +1423,10 @@ footer {
 }
 
 /**
-   * =========================================================
-   * ************   Page: Archive   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Page: Archive   ************
+     * =========================================================
+     */
 
 a.timeline-tile-title,
 a.timeline-tile-title span,
@@ -1440,10 +1441,10 @@ a.timeline-tile-title span:hover {
 }
 
 /**
-   * =========================================================
-   * ************   Page: Search   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Page: Search   ************
+     * =========================================================
+     */
 
 #search-input .form-input:focus {
   border-color: rgba(0, 0, 0, 0.4);
@@ -1506,10 +1507,10 @@ a.timeline-tile-title span:hover {
 }
 
 /**
-   * =========================================================
-   * ************   Page: Link   ************
-   * =========================================================
-   */
+     * =========================================================
+     * ************   Page: Link   ************
+     * =========================================================
+     */
 
 .link-container {
   padding: 0.4rem 0;
@@ -1558,7 +1559,7 @@ a.timeline-tile-title span:hover {
 .link-item a:hover,
 .link-item a:focus,
 .link-item a:visited {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .link-item .link-img img {
@@ -1950,7 +1951,7 @@ body {
 a {
   color: #5755d9;
   outline: none;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a:focus {
@@ -2035,7 +2036,7 @@ u {
 abbr[title] {
   border-bottom: 0.05rem dotted;
   cursor: help;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 kbd {
@@ -2137,7 +2138,7 @@ dl dd {
 .cjk ins,
 .cjk u {
   border-bottom: 0.05rem solid;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 :lang(zh) del + del,
@@ -2220,7 +2221,7 @@ dl dd {
   outline: none;
   padding: 0.25rem 0.4rem;
   text-align: center;
-  text-decoration: none;
+  text-decoration: none !important;
   transition: all 0.2s ease;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2238,7 +2239,7 @@ dl dd {
 .btn:hover {
   background: #f1f1fc;
   border-color: #4b48d6;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .btn:active,
@@ -2246,7 +2247,7 @@ dl dd {
   background: #4b48d6;
   border-color: #3634d2;
   color: #fff;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .btn:active.loading::after,
@@ -2400,7 +2401,7 @@ dl dd {
   margin-right: -2px;
   opacity: 1;
   padding: 0;
-  text-decoration: none;
+  text-decoration: none !important;
   width: 0.8rem;
 }
 
@@ -3641,7 +3642,7 @@ video.video-responsive::before {
 .navbar .navbar-brand {
   font-size: 0.9rem;
   font-weight: 500;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .accordion input:checked ~ .accordion-header .icon,
@@ -3976,7 +3977,7 @@ summary.accordion-header::-webkit-details-marker {
   margin: 0.1rem;
   max-width: 100%;
   padding: 0.2rem 0.4rem;
-  text-decoration: none;
+  text-decoration: none !important;
   vertical-align: middle;
 }
 
@@ -4066,7 +4067,7 @@ summary.accordion-header::-webkit-details-marker {
 .menu .menu-item {
   margin-top: 0;
   padding: 0 0.4rem;
-  text-decoration: none;
+  text-decoration: none !important;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -4079,7 +4080,7 @@ summary.accordion-header::-webkit-details-marker {
   display: block;
   margin: 0 -0.4rem;
   padding: 0.2rem 0.4rem;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .menu .menu-item > a:focus,
@@ -4215,7 +4216,7 @@ summary.accordion-header::-webkit-details-marker {
 .nav .nav-item a {
   color: #667189;
   padding: 0.2rem 0.4rem;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .nav .nav-item a:focus,
@@ -4260,7 +4261,7 @@ summary.accordion-header::-webkit-details-marker {
   color: #667189;
   display: inline-block;
   padding: 0.2rem 0.4rem;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .pagination .page-item a:focus,
@@ -4418,7 +4419,7 @@ summary.accordion-header::-webkit-details-marker {
   color: #acb3c2;
   display: inline-block;
   padding: 20px 10px 0;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .step .step-item a::before {
@@ -4471,7 +4472,7 @@ summary.accordion-header::-webkit-details-marker {
   display: block;
   margin: 0 0.4rem 0 0;
   padding: 0.4rem 0.2rem 0.3rem 0.2rem;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .tab .tab-item a:focus,
