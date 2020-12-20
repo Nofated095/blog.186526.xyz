@@ -133,6 +133,23 @@ routing.registerRoute(
     })
 );
 
+routing.registerRoute(
+    new RegExp('https://www\.google-analytics\.com'),
+    new NetworkFirst({
+        cacheName: 'ga-api' + cacheSuffixVersion,
+        fetchOptions: {
+            mode: 'cors',
+            credentials: 'omit'
+        },
+        networkTimeoutSeconds: 3
+    })
+);
+
+routing.registerRoute(
+    new RegExp('https://blog\.186526\.xyz'),
+    new StaleWhileRevalidate()
+);
+
 /*
  * Others img
  * Method: staleWhileRevalidate
@@ -165,12 +182,14 @@ routing.registerRoute(
     new StaleWhileRevalidate()
 );
 
+
+
 /*
  * Default - Serve as it is
  * networkFirst
  */
 routing.setDefaultHandler(
-    new StaleWhileRevalidate({
+    new NetworkFirst({
         networkTimeoutSeconds: 3
     })
 );
