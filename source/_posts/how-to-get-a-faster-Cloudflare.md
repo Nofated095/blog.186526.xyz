@@ -5,6 +5,7 @@ tags:
   - Cloudflare
   - Worker
   - node
+  - Website
 ---
 
 > ~~哪个男孩不想拥有一个贼快且使用 Cloudflare 的站点呢？~~
@@ -13,7 +14,7 @@ tags:
 
 ## 降低请求用时
 
-### 使用`HTTP2`
+### 使用 `HTTP2`
 
 > HTTP/2（超文本传输协议第 2 版，最初命名为 HTTP 2.0），简称为 h2（基于 TLS/1.2 或以上版本的加密连接）或 h2c（非加密连接），是 HTTP 协议的的第二个主要版本，使用于万维网。
 > HTTP/2 是 HTTP 协议自 1999 年 HTTP 1.1 的改进版 RFC 2616 发布后的首个更新，主要基于 SPDY 协议。它由互联网工程任务组（IETF）的 Hypertext Transfer Protocol Bis（httpbis）工作小组进行开发。该组织于 2014 年 12 月将 HTTP/2 标准提议递交至 IESG 进行讨论，于 2015 年 2 月 17 日被批准。
@@ -22,9 +23,9 @@ tags:
 >
 > 来自[维基百科](https://zh.wikipedia.org/wiki/HTTP/2)
 
-`HTTP2`相较于`HTTP 1.1`有许多特性 例如`Server Push` `header压缩` `多路复用`
+`HTTP2` 相较于 `HTTP 1.1` 有许多特性 例如 `Server Push` `header压缩` `多路复用` 
 
-他们分别解决了`HTTP 1.1`的不同问题 尽可能提高了`HTTP`的性能
+他们分别解决了 `HTTP 1.1` 的不同问题 尽可能提高了 `HTTP` 的性能
 
 #### `Server Push`
 
@@ -65,7 +66,7 @@ tags:
 
 ### 使用 `Cloudflare Partner` 来启用自选解析
 
-使用 `Cloudflare Parnter` 的自选解析可以有效的降低 `DNS` 请求用时,也可以对 `Cloudflare` 的 `Anycast` 网络进行部分自定义
+使用 `Cloudflare Partner` 的自选解析可以有效的降低 `DNS` 请求用时,也可以对 `Cloudflare` 的 `Anycast` 网络进行部分自定义
 
 文章引路-> [关于 Cloudflare 自选节点的一些个人见解 | Puresys](https://www.puresys.net/3116.html)
 
