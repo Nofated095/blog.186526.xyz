@@ -29,10 +29,8 @@ let suc = () => {
     whenAvailable("LazyLoad", () => {
         new LazyLoad();
     });
-    if (window.valinestatus) {
-        whenAvailable("Valine", () => {
-            valinedo();
-        });
+    if (window.valinedo) {
+        valinedo();
     }
 };
 let whenAvailable = (name, callback) => {

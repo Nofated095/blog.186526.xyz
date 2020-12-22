@@ -1,7 +1,7 @@
-<div id="vcomments"></div>
+<div id="vcomments">Loading……<noscript>启动js来查看评论</noscript></div>
 
 <!--<script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>-->
 <script>
     var GUEST_INFO = ['nick', 'mail', 'link'];
     var guest_info = '<%= theme.comment.valine.guest_info %>'.split(',').filter(function (item) {
@@ -9,24 +9,56 @@
     });
     var notify = '<%= theme.comment.valine_notify %>' === 'true';
     var verify = '<%= theme.comment.valine_verify %>' === 'true';
-    var valinedo = () => {
-        new Valine({
-            el: '#vcomments',
-            notify: notify,
-            verify: verify,
-            appId: "<%= theme.comment.valine.leancloud_appId %>",
-            appKey: "<%= theme.comment.valine.leancloud_appKey %>",
-            placeholder: "<%= theme.comment.valine.placeholder %>",
-            meta: guest_info,
-            pageSize: '<%= theme.comment.valine.pageSize %>',
-            avatar: '<%= theme.comment.valine.avatar %>',
-            lang: '<%= theme.comment.valine.lang %>',
-            guest_info: guest_info,
-            visitor: <%= theme.valine_counter.enable %>
-    });
+    function valinenow(){
+        var a = document.createElement("script"),d = document;
+        a.src = "https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js";
+        (d.head || d.body).appendChild(a);
+        whenAvailable("Valine", () => {
+            new Valine({
+                el: '#vcomments',
+                notify: notify,
+                verify: verify,
+                appId: "<%= theme.comment.valine.leancloud_appId %>",
+                appKey: "<%= theme.comment.valine.leancloud_appKey %>",
+                placeholder: "<%= theme.comment.valine.placeholder %>",
+                meta: guest_info,
+                pageSize: '<%= theme.comment.valine.pageSize %>',
+                avatar: '<%= theme.comment.valine.avatar %>',
+                lang: '<%= theme.comment.valine.lang %>',
+                guest_info: guest_info,
+                visitor: <%= theme.valine_counter.enable %>
+            });
+        })
     };
-    valinestatus = true;
-    window.addEventListener('load',()=>{
+    function valinedo(){
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+        if (!isBot && supportsIntersectionObserver) {
+            var valine_observer = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) {
+                    valinenow();
+                    valine_observer.disconnect();
+                }
+            }, { threshold: [0] });
+            valine_observer.observe(document.getElementById('vcomments'));
+        } else {
+            valinenow();
+        }
+    }
+    window.addEventListener('load', () => {
         valinedo();
     });
+    if(!window.whenAvailable){
+        let whenAvailable = (name, callback) => {
+            var interval = 100;
+            window.setTimeout(function () {
+                if (window[name]) {
+                    callback(window[name]);
+                } else {
+                    window.setTimeout(arguments.callee, interval);
+                }
+            }, interval);
+        }
+    }
 </script>
