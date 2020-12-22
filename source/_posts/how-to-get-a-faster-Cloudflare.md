@@ -8,7 +8,7 @@ tags:
   - Website
 ---
 
-> ~~哪个男孩不想拥有一个贼快且使用  的站点呢？~~
+> ~~哪个男孩不想拥有一个贼快且使用Cloudflare的站点呢？~~
 
 <!--more-->
 
@@ -76,7 +76,7 @@ tags:
 
 ### 使用缓存规则
 
-`Clouflare` 为用户提供了完善的缓存配置功能，你可以通过 `Page Rules` 来详细的调整缓存规则
+Cloudflare 为用户提供了完善的缓存配置功能，你可以通过 `Page Rules` 来详细的调整缓存规则
 
 你可以在这里查询到有关 [`Caching`](https://support.cloudflare.com/hc/en-us/categories/200275248-Caching) 的内容
 
