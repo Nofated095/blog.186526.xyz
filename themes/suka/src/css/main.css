@@ -67,6 +67,7 @@ html .btn:focus {
 .card {
   /* Remove card border */
   border: none;
+  border-radius: 0.5rem;
 }
 
 .timeline .timeline-item:last-child::before {
@@ -374,7 +375,7 @@ header .divider {
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
     0 1px 3px 0 rgba(0, 0, 0, 0.12);
   margin: 0.8rem 0;
-  border-radius: 0;
+  border-radius: 0.5rem;
   position: relative;
   min-width: 0;
   word-wrap: break-word;
@@ -597,6 +598,7 @@ a.category-link {
 /* Post TOC */
 
 #post-toc {
+  display: none;
   position: relative;
   z-index: 0;
   max-width: 890px;
@@ -1038,6 +1040,7 @@ a.category-link {
   background-color: var(--post-footer);
   color: inherit;
   border-radius: 3px;
+  padding: 0px 0.2rem;
 }
 
 #post-content pre > code {
