@@ -186,11 +186,21 @@ routing.registerRoute(
 
 routing.registerRoute(
     /.*www\.google-analytics\.com/,
-    new NetworkFirst()
+    new NetworkOnly()
 );
 routing.registerRoute(
-    new RegExp('https://blog\.186526\.xyz'),
-    new StaleWhileRevalidate()
+    new RegExp(/.*blog\.186526\.xyz/),
+    new NetworkFirst(
+        {
+            cacheName: 'blog' + cacheSuffixVersion,
+            plugins: [
+                new ExpirationPlugin({
+                    maxAgeSeconds: 60 * 10,
+                    purgeOnQuotaError: true
+                })
+            ]    
+        }
+    )
 );
 
 /*
