@@ -186,23 +186,14 @@ routing.registerRoute(
 
 routing.registerRoute(
     /.*www\.google-analytics\.com/,
-    new NetworkOnly()
+    new NetworkOnly({
+        plugins: [
+            new backgroundSync.BackgroundSyncPlugin('Optical_Collect', {
+                maxRetentionTime: 12 * 60 // Retry for max of 12 Hours (specified in minutes)
+            }),
+        ]
+    })
 );
-routing.registerRoute(
-    new RegExp(/.*blog\.186526\.xyz/),
-    new NetworkFirst(
-        {
-            cacheName: 'blog' + cacheSuffixVersion,
-            plugins: [
-                new ExpirationPlugin({
-                    maxAgeSeconds: 60 * 10,
-                    purgeOnQuotaError: true
-                })
-            ]    
-        }
-    )
-);
-
 /*
  * Others img
  * Method: staleWhileRevalidate
