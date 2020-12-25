@@ -136,3 +136,10 @@ node_sass:
   includePaths:
     - "node_modules"
   outputStyle: compressed
+
+uglify:
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - "js/*.js"

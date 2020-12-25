@@ -16,6 +16,20 @@ window.addEventListener("load", () => {
 });
 window.addEventListener('load', () => {
     if ("serviceWorker" in navigator) { navigator.serviceWorker.register("/sw.js", { scope: "/" }).then((function (e) { })).catch((function (e) { })); let e = !1; navigator.serviceWorker.addEventListener("controllerchange", () => { e || (e = !0, alert("正在更新Service Worker……"), window.location.reload()) }) }
+    if(!window.dataLayer) {
+        let d=document,a = d.createElement("script");
+        a.async = true;
+        a.src="https://www.googletagmanager.com/gtag/js?id=G-ENYRL7T64N";
+        d.head.appendChild(a);
+    }
+    {
+        let d=document,url="/css/fonts.min.css";
+        d.head.innerHTML += `<link rel="preload" href="${url}" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="${url}"></noscript>`;
+    }
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ENYRL7T64N');
 });
 let send = () => {
     whenAvailable("NProgress", () => {
@@ -32,6 +46,10 @@ let suc = () => {
     if (window.valinedo) {
         valinedo();
     }
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ENYRL7T64N');
 };
 let whenAvailable = (name, callback) => {
     var interval = 100;

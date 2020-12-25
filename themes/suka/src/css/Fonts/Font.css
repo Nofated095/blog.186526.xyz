@@ -1,0 +1,9 @@
+body{
+    font-family: -apple-system, system-ui,'Roboto','Noto Sans SC',sans-serif !important;
+}
+.post-entry , #post-card .card-title{
+  font-family: 'Ubuntu','Roboto','Noto Sans SC',sans-serif !important;
+}
+.header-title{
+  font-family: 'Google Sans',-apple-system, system-ui,'Roboto','Noto Sans SC',sans-serif !important;
+}
