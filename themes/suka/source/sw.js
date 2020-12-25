@@ -9,7 +9,7 @@ const { CacheFirst, NetworkFirst, NetworkOnly, StaleWhileRevalidate } = strategi
 const { ExpirationPlugin } = expiration;
 const { CacheableResponsePlugin } = cacheableResponse;
 
-const cacheSuffixVersion = '-200512',
+const cacheSuffixVersion = '-2012251',
     // precacheCacheName = core.cacheNames.precache,
     // runtimeCacheName = core.cacheNames.runtime,
     maxEntries = 100;
@@ -134,17 +134,60 @@ routing.registerRoute(
 );
 
 routing.registerRoute(
-    new RegExp('https://www\.google-analytics\.com'),
-    new NetworkFirst({
-        cacheName: 'ga-api' + cacheSuffixVersion,
+    /.*fonts\.googleapis\.com/,
+    new CacheFirst({
+        cacheName: 'static-immutable' + cacheSuffixVersion,
         fetchOptions: {
             mode: 'cors',
             credentials: 'omit'
         },
-        networkTimeoutSeconds: 3
+        plugins: [
+            new ExpirationPlugin({
+                maxAgeSeconds: 30 * 24 * 60 * 60,
+                purgeOnQuotaError: true
+            })
+        ]
     })
 );
 
+routing.registerRoute(
+    /.*fonts\.gstatic\.com/,
+    new CacheFirst({
+        cacheName: 'static-immutable' + cacheSuffixVersion,
+        fetchOptions: {
+            mode: 'cors',
+            credentials: 'omit'
+        },
+        plugins: [
+            new ExpirationPlugin({
+                maxAgeSeconds: 30 * 24 * 60 * 60,
+                purgeOnQuotaError: true
+            })
+        ]
+    })
+);
+
+routing.registerRoute(
+    /.*www\.googletagmanager\.com/,
+    new CacheFirst({
+        cacheName: 'static-immutable' + cacheSuffixVersion,
+        fetchOptions: {
+            mode: 'cors',
+            credentials: 'omit'
+        },
+        plugins: [
+            new ExpirationPlugin({
+                maxAgeSeconds: 30 * 24 * 60 * 60,
+                purgeOnQuotaError: true
+            })
+        ]
+    })
+);
+
+routing.registerRoute(
+    /.*www\.google-analytics\.com/,
+    new NetworkFirst()
+);
 routing.registerRoute(
     new RegExp('https://blog\.186526\.xyz'),
     new StaleWhileRevalidate()
