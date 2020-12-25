@@ -16,6 +16,7 @@ window.addEventListener("load", () => {
 });
 window.addEventListener('load', () => {
     if ("serviceWorker" in navigator) { navigator.serviceWorker.register("/sw.js", { scope: "/" }).then((function (e) { })).catch((function (e) { })); let e = !1; navigator.serviceWorker.addEventListener("controllerchange", () => { e || (e = !0, alert("正在更新Service Worker……"), window.location.reload()) }) }
+    if (/HeadlessChrome/.test(window.navigator.userAgent)) {return;}
     if(!window.dataLayer) {
         let d=document,a = d.createElement("script");
         a.async = true;
