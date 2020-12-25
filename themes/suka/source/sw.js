@@ -185,7 +185,7 @@ routing.registerRoute(
 );
 
 routing.registerRoute(
-    /.*www\.google-analytics\.com/,
+    new RegExp('https://www.\.google-analytics\.com'),
     new NetworkOnly({
         plugins: [
             new backgroundSync.BackgroundSyncPlugin('Optical_Collect', {
