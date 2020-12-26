@@ -17,9 +17,9 @@
         {
             "src":"/sw.js",
             "headers": {
-                "Cache-Control": "no-cache,no-store",
+                "Cache-Control": "no-cache,no-store"
             }
-        }
+        },
         {
             "src": "/(.*)",
             "headers": {
