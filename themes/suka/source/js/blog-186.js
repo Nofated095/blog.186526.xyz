@@ -32,8 +32,8 @@ window.addEventListener('load', () => {
         navigator.serviceWorker.addEventListener('controllerchange', () => {
             let d = document.querySelector("title");
             d.innerText = "Refresh to update Service Worker - " + d.innerText;
-            d=document.body;
-            d.innerHTML = `<div class="toast toast-primary">Service Worker已经更新 请刷新页面进行安装</div>` + d.innerHTML;
+            //d=document.body;
+            //d.innerHTML = `<div class="toast toast-primary">Service Worker已经更新 请刷新页面进行安装</div>` + d.innerHTML;
         });
     }
     if (/HeadlessChrome/.test(window.navigator.userAgent)) { return; }
