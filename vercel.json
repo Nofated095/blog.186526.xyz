@@ -9,7 +9,7 @@
             "continue": true
         },
         {
-            "src": "/",
+            "src": "/*(.html)",
             "headers": {
                 "Link":"</css/style.min.css>; rel=preload; as=style"
             }

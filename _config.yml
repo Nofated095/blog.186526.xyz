@@ -142,7 +142,7 @@ uglify:
 
 html_minifier:
   exclude: 
-    -"*.html"
+    - "*.html"
   html_minifier:  
   collapseBooleanAttributes: true
   collapseWhitespace: true
