@@ -9,12 +9,6 @@
             "continue": true
         },
         {
-            "src": "/*(.html)",
-            "headers": {
-                "Link":"</css/style.min.css>; rel=preload; as=style"
-            }
-        },
-        {
             "src":"/sw.js",
             "headers": {
                 "Cache-Control": "no-cache,no-store"
@@ -23,7 +17,8 @@
         {
             "src": "/(.*)",
             "headers": {
-                "Cache-Control": "s-maxage=1209600, max-age=86400, public"
+                "Cache-Control": "s-maxage=1209600, max-age=86400, public",
+                "Link":"</css/style.min.css>; rel=preload; as=style"
             },
             "continue": true
         }
