@@ -124,14 +124,14 @@ feed:
   content_limit:
   content_limit_delim: " "
 
-clean_css:
-  exclude: 
-    - "css/style.min.css"
-
 node_sass:
   includePaths:
     - "node_modules"
   outputStyle: compressed
+
+clean_css:
+  exclude: 
+    - "css/*.min.css"
 
 uglify:
   mangle: true
@@ -142,8 +142,8 @@ uglify:
 
 html_minifier:
   exclude: 
-    - "*.html"
-  html_minifier:  
+    - "/*.html"
+  html_minifier: 
   collapseBooleanAttributes: true
   collapseWhitespace: true
   ignoreCustomComments: [ !!js/regexp /^\s*more/]
