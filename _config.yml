@@ -128,10 +128,6 @@ clean_css:
   exclude: 
     - "css/style.min.css"
 
-html_minifier:
-  exclude: 
-    - "*.html"
-
 node_sass:
   includePaths:
     - "node_modules"
@@ -143,3 +139,17 @@ uglify:
   compress:
   exclude:
     - "js/*.js"
+
+html_minifier:
+  exclude: 
+    -"*.html"
+  html_minifier:  
+  collapseBooleanAttributes: true
+  collapseWhitespace: true
+  ignoreCustomComments: [ !!js/regexp /^\s*more/]
+  removeComments: true
+  removeEmptyAttributes: true
+  removeScriptTypeAttributes: true
+  removeStyleLinkTypeAttributes: true
+  minifyJS: true
+  minifyCSS: true
