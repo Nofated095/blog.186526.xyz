@@ -122,6 +122,8 @@ PS: 鉴于 `Cloudflare Pages` 目前处于 `Beta Access` 阶段 请阅读 [Cloud
 
 #### 使用 `vanilla-lazyload`
 
+#### 推迟不必要的 `CSS` `JS`
+
 ## 优化网络质量
 
 ### ~~备案 上带国内CDN的企业版~~

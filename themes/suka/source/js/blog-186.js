@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
 window.addEventListener('load', () => {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('./sw.js', {
+            .register('/sw.js', {
                 scope: '/',
             })
             .then(function (registration) {
@@ -29,15 +29,11 @@ window.addEventListener('load', () => {
             .catch(function (err) {
                 console.warn('ServiceWorker registration failed: ', err);
             });
-        let refreshing = false;
         navigator.serviceWorker.addEventListener('controllerchange', () => {
-            if (refreshing) {
-                return;
-            }
-            refreshing = true;
             let d = document.querySelector("title");
-            d.innerText = "Refresh 2 update Service Worker - " + d.innerText;
-            console.log('Service Worker 等待更新……');
+            d.innerText = "Refresh to update Service Worker - " + d.innerText;
+            d=document.body;
+            d.innerHTML = `<div class="toast toast-primary">Service Worker已经更新 请刷新页面进行安装</div>` + d.innerHTML;
         });
     }
     if (/HeadlessChrome/.test(window.navigator.userAgent)) { return; }
@@ -47,7 +43,7 @@ window.addEventListener('load', () => {
         a.src = "https://www.googletagmanager.com/gtag/js?id=G-ENYRL7T64N";
         d.head.appendChild(a);
     }
-    if (navigator.connection.rtt <= 300 & navigator.connection.downlink >= 1) {
+    if (navigator.connection.rtt <= 350 & navigator.connection.downlink >= 1) {
         let d = document, url = "/css/fonts.min.css";
         d.head.innerHTML += `<link rel="preload" href="${url}" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="${url}"></noscript>`;
     }

@@ -9,7 +9,7 @@ const { CacheFirst, NetworkFirst, NetworkOnly, StaleWhileRevalidate } = strategi
 const { ExpirationPlugin } = expiration;
 const { CacheableResponsePlugin } = cacheableResponse;
 
-const cacheSuffixVersion = '-2012251',
+const cacheSuffixVersion = '-201226a',
     // precacheCacheName = core.cacheNames.precache,
     // runtimeCacheName = core.cacheNames.runtime,
     maxEntries = 100;
@@ -185,14 +185,15 @@ routing.registerRoute(
 );
 
 routing.registerRoute(
-    new RegExp('https://www.\.google-analytics\.com'),
+    new RegExp('https://www.google-analytics.com'),
     new NetworkOnly({
         plugins: [
             new backgroundSync.BackgroundSyncPlugin('Optical_Collect', {
-                maxRetentionTime: 12 * 60 // Retry for max of 12 Hours (specified in minutes)
+                maxRetentionTime: 12 * 60
             }),
         ]
-    })
+    }),
+    'POST'
 );
 /*
  * Others img
