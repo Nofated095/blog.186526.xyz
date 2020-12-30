@@ -17,6 +17,6 @@
         <%- partial('_partial/menu/index-share', {}, {cache: theme.fragment_cache}) %>
     <% } %>
     <% if (theme.nav.rss.use) { %>
-        <a href="<%= url_for(config.feed.path) %>" target="_blank" class="navbar-link">RSS</a>
+        <a href="<%= url_for(config.feed.path) %>" target="_blank" class="navbar-link not-display-mobile">RSS</a>
     <% } %>
 </nav>

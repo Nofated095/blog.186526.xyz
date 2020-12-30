@@ -1,16 +1,21 @@
 <!-- ## Header ##-->
 <header>
-    <h1 class="header-title text-center">    <img src="https://186526.xyz/pic/avatar-round.webp" alt="Avatar" style="border-radius:100%;width:150px;"><br><a href="<%= config.root %>"><%= config.title %></a></h1>
-
-    <p class="text-center header-slogan">
-        <% if (theme.uiux.slogan) { %>
-            <% if (Array.isArray(theme.uiux.slogan)) { %>
-                <%- theme.uiux.slogan.join('<br>') %>
-            <% } else { %>
-                <%- theme.uiux.slogan %>
+    <h1 class="header-title text-center">    
+        <img src="https://186526.xyz/pic/avatar-round.webp" alt="Avatar"><br class="display-on-mobile">
+        <span class="header-span">
+        <a href="<%= config.root %>"><%= config.title %></a>
+        <p class="text-center header-slogan">
+            <% if (theme.uiux.slogan) { %>
+                <% if (Array.isArray(theme.uiux.slogan)) { %>
+                    <%- theme.uiux.slogan.join('<br>') %>
+                <% } else { %>
+                    <%- theme.uiux.slogan %>
+                <% } %>
             <% } %>
-        <% } %>
-    </p>
+        </p>    
+        </span>
+    </h1>
+
 
     <%- partial('_partial/index-nav') %>
 </header>

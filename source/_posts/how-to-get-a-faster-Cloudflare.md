@@ -56,12 +56,12 @@ tags:
 
 ##### `多路复用`
 
-`HTTP2.0` 会将一个 `TCP` 连接分为若干个 流（Stream），每个 流 中可以传输若干 消息（Message），每个 消息 由若干最小的二进制 帧（Frame） 组成
-这个举措在 SPDY 中的实践表明，相比 HTTP/1.1，新页面加载可以加快 11.81% 到 47.7%
+`HTTP2.0` 会将一个 `TCP` 连接分为若干个 流（Stream），每个 流 中可以传输若干 消息（Message），每个 消息 由若干最小的二进制 帧（Frame） 组成。
+相比 `HTTP/1.1` 的单个 `TCP` 链接只能传输单一请求，`HTTP2` 加载可以加快 11.81% 到 47.7%
 
 ##### 如何启用
 
-1. 在  面板启用 `HTTP2`
+1. 在 `Cloudflare` 面板启用 `HTTP2`
 2. Enjoy it
 
 ### 使用 `Cloudflare Partner` 来启用自选解析
@@ -105,6 +105,17 @@ PS: 鉴于 `Cloudflare Pages` 目前处于 `Beta Access` 阶段 请阅读 [Cloud
 ## 前端性能优化
 
 ### 降低请求
+
+在 `HTTP` 中，每一个请求都需要经过以下的阶段。
+
+1. `Client` 链接至 `Server`
+2. `Client` 发送请求
+3. `Server` 接受、处理、返回请求
+4. 释放该 `TCP` 请求
+
+浏览器同时针对单个域名拥有并发限制，在 `Chrome` 中，同时只能对同一域名建立6个 `TCP` 链接。
+
+你可以通过 [`Webpack`](https://webpack.js.org/) 等工具对 `css`、`js` 文件进行打包、合并、最小化。
 
 #### 使用 `NoModule/Module` 构建
 
