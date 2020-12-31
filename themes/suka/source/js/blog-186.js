@@ -64,14 +64,16 @@ let suc = () => {
     whenAvailable("LazyLoad", () => {
         new LazyLoad();
     });
-    if (window.valinedo) {
-        valinedo();
-    }
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-ENYRL7T64N');
 };
+document.addEventListener('LoadValine',()=>{
+    if(document.querySelector("#vcomments")){
+        valinedo();
+    }
+});
 let whenAvailable = (name, callback) => {
     var interval = 100;
     window.setTimeout(function () {
