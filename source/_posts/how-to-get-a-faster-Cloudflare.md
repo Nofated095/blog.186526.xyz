@@ -8,7 +8,7 @@ tags:
   - Website
 ---
 
-> ~~哪个男孩不想拥有一个贼快且使用Cloudflare的站点呢？~~
+> ~~哪个男孩不想拥有一个贼快且使用 Cloudflare 的站点呢？~~
 
 <!--more-->
 
@@ -41,7 +41,7 @@ tags:
 
 ##### 如何启用 `Server Push`
 
-1. 需要在  面板启用 `HTTP2`
+1. 需要在 面板启用 `HTTP2`
 2. 在需要 `Server Push` 的 `HTML` 文件发送时新增 `header` : `Link`
 3. `Link` 需为 `HTML 5` 标准中 `<link rel="preload">` 的内容
    例如 `Link:</css/style.min.css>; rel=preload; as=style`
@@ -66,13 +66,13 @@ tags:
 
 ### 使用 `Cloudflare Partner` 来启用自选解析
 
-使用 `Cloudflare Partner` 的自选解析可以有效的降低 `DNS` 请求用时,也可以对  的 `Anycast` 网络进行部分自定义
+使用 `Cloudflare Partner` 的自选解析可以有效的降低 `DNS` 请求用时,也可以对 的 `Anycast` 网络进行部分自定义
 
 文章引路-> [关于 Cloudflare 自选节点的一些个人见解 | Puresys](https://www.puresys.net/3116.html)
 
 ## 降低回源用时
 
-但是， 中国大陆方向的网络质量是我们无法控制的，因此如果要缩短网站响应耗时、减少 `TTFB（首字节时间）` ，就只能在  回源上做优化。
+但是， 中国大陆方向的网络质量是我们无法控制的，因此如果要缩短网站响应耗时、减少 `TTFB（首字节时间）` ，就只能在 回源上做优化。
 
 ### 使用缓存规则
 
@@ -86,7 +86,7 @@ Cloudflare 为用户提供了完善的缓存配置功能，你可以通过 `Page
 >
 > -- 来自 [`google/brotil/README.md`](https://github.com/google/brotil)
 
-`brotil` 是一个现代的压缩算法，已经被广泛用于网络的加速。相较于常用的 `gzip` 压缩算法 `brotil` 可以提高约10%-25%的压缩比。
+`brotil` 是一个现代的压缩算法，已经被广泛用于网络的加速。相较于常用的 `gzip` 压缩算法 `brotil` 可以提高约 10%-25%的压缩比。
 
 你可以在 「 速度 - `Brotil` 」处应用 `Brotil` 加速。
 
@@ -115,19 +115,19 @@ PS: 鉴于 `Cloudflare Pages` 目前处于 `Beta Access` 阶段 请阅读 [Cloud
 3. `Server` 接受、处理、返回请求
 4. 释放该 `TCP` 请求
 
-浏览器同时针对单个域名拥有并发限制，在 `Chrome` 中，同时只能对同一域名建立6个 `TCP` 链接。
+浏览器同时针对单个域名拥有并发限制，在 `Chrome` 中，同时只能对同一域名建立 6 个 `TCP` 链接。
 
 你可以通过 [`Webpack`](https://webpack.js.org/) 等工具对 `css`、`js` 文件进行打包、合并、最小化。
 
 #### 使用 `NoModule/Module` 构建
 
-`ESM` 即 `ECMAScript modules`，是官方针对 `JavaScript` 的模块格式，在Chrome、Firefox及其他现代浏览器中，你可以通过 `<script type="module">` 来加载 `ESM` 代码。
+`ESM` 即 `ECMAScript modules`，是官方针对 `JavaScript` 的模块格式，在 Chrome、Firefox 及其他现代浏览器中，你可以通过 `<script type="module">` 来加载 `ESM` 代码。
 由于 `ESM` 在现代浏览器（支持 `ES6+` 特性）中需要使用特殊的 `type`，你可以通过 `<script type="module">` 来判断浏览器对于 `ES6+` 的支持。
 相对应的， `<script nomodule>` 不会在支持 `ES6+` 特性的浏览器上执行。
 
-为了兼容性，大部分项目会编写 `ES6+` js代码，使用 `Babel` 、`Polyfill` 等工具将ES6+代码转换成 `ES5` 代码，以获取更好的兼容性，但是这样也同时会增加最后打包过后的代码大小，我们可以通过使用该方法来大幅度减小在现代浏览器上的加载大小，同时换取同等的兼容性。
+为了兼容性，大部分项目会编写 `ES6+` js 代码，使用 `Babel` 、`Polyfill` 等工具将 ES6+代码转换成 `ES5` 代码，以获取更好的兼容性，但是这样也同时会增加最后打包过后的代码大小，我们可以通过使用该方法来大幅度减小在现代浏览器上的加载大小，同时换取同等的兼容性。
 
-你可以参考[「JDC | 京东设计中心 » 【译】如何在生产环境中部署ES2015+"」](https://jdc.jd.com/archives/4911)来尝试为项目部署 `Nomodule/Module` 支持。
+你可以参考[「JDC | 京东设计中心 » 【译】如何在生产环境中部署 ES2015+"」](https://jdc.jd.com/archives/4911)来尝试为项目部署 `Nomodule/Module` 支持。
 
 #### 缩小组件粒度
 
@@ -140,11 +140,11 @@ PS: 鉴于 `Cloudflare Pages` 目前处于 `Beta Access` 阶段 请阅读 [Cloud
 
 我们可以对这三种文件进行最小化操作，去除不必要的格式符、空白符、注释符，达到减小文件体积的效果。
 
-你可以通过本地处理以及Cloudflare分发时同时压缩的方式来对文件进行处理。
+你可以通过本地处理以及 Cloudflare 分发时同时压缩的方式来对文件进行处理。
 
 对于本地处理，你可以使用 [`minify`](https://www.npmjs.com/package/minify) [`clean-css`](https://github.com/jakubpawlowicz/clean-css) [`HTMLMinifier`](https://www.npmjs.com/package/html-minifier)
 
-对于Cloudflare，你可以在 「 速度 - 优化 - `Auto Minify` 」来配置 `js` 压缩。
+对于 Cloudflare，你可以在 「 速度 - 优化 - `Auto Minify` 」来配置 `js` 压缩。
 
 ### 预请求
 
@@ -160,17 +160,20 @@ PS: 鉴于 `Cloudflare Pages` 目前处于 `Beta Access` 阶段 请阅读 [Cloud
 你可以通过对 `Flying Pages` 文件的引用来使用其的功能。
 例如:
 
-``` html
+```html
 <script>
-window.FPConfig = {
-  delay: 0,//浏览器空闲多少秒后开始预加载
-  ignoreKeywords: [],//不进行预加载的链接，例 ["#", "/about"]
-  maxRPS: 3,//每秒最大加载数
-  hoverDelay: 50//鼠标悬浮后预加的延迟，毫秒单位
-};
-// 上方数值为默认值
+  window.FPConfig = {
+    delay: 0, //浏览器空闲多少秒后开始预加载
+    ignoreKeywords: [], //不进行预加载的链接，例 ["#", "/about"]
+    maxRPS: 3, //每秒最大加载数
+    hoverDelay: 50, //鼠标悬浮后预加的延迟，毫秒单位
+  };
+  // 上方数值为默认值
 </script>
-<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"
+></script>
 ```
 
 本站使用 `Flying Pages` 对文件进行预先缓存。
@@ -179,9 +182,9 @@ window.FPConfig = {
 
 > `Workbox` 是一组库，可以为 `PWA` （渐进式网络应用） 的生产环境提供支持。
 >
-> --翻译自 [`Workbox  |  Google Developers`](https://developers.google.com/web/tools/workbox)
+> --翻译自 [`Workbox | Google Developers`](https://developers.google.com/web/tools/workbox)
 
-你可以使用 `Workbox` 对缓存进行完全的控制，并使用以下feature对网络进行管理。
+你可以使用 `Workbox` 对缓存进行完全的控制，并使用以下 feature 对网络进行管理。
 
 - `预缓存`
 - `运行环境缓存`
@@ -198,11 +201,63 @@ window.FPConfig = {
 
 #### 使用 `vanilla-lazyload`
 
+[`vanilla-lazyload`](https://github.com/verlok/vanilla-lazyload) 是一个简单好用的图片懒加载库。使用 `IntersectionObserver` 来进行监听。
+
+例如
+
+```html
+<img alt="A lazy image" class="lazy" src="lazy.jpg" />
+```
+
+使用该库后
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
+<img alt="A lazy image" class="lazy" data-src="lazy.jpg" />
+```
+
+图片仅会在滚动到对应位置时加载。
+
 #### 推迟不必要的 `CSS` `JS`
+
+对于用户，保持较低的 `LCP` (最大内容绘制，可视为主要内容加载的耗时) 是极有必要的，我们可以通过 `IntersectionObserver API` 对例如 `Valine` 等的 `JavaScript` 进行推迟。不多说了，直接上代码。
+
+```javascript
+function Load() {
+  var runningOnBrowser = typeof window !== "undefined"; //判断是否浏览器运行
+  var isBot =
+    (runningOnBrowser && !("onscroll" in window)) ||
+    (typeof navigator !== "undefined" &&
+      /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(
+        navigator.userAgent
+      )); // 排除爬虫
+  var supportsIntersectionObserver =
+    runningOnBrowser && "IntersectionObserver" in window; //排除不支持该API的浏览器
+  if (!isBot && supportsIntersectionObserver) {
+    //判断是否支持
+    var observer = new IntersectionObserver(
+      function (entries) {
+        if (entries[0].isIntersecting) {
+          /*
+           * Do some thing here
+           */
+          observer.disconnect();
+        }
+      },
+      { threshold: [0] }
+    );
+    observer.observe(document.getElementById("vcomments"));
+  } else {
+    /*
+     * Do some thing here
+     */
+  }
+}
+```
 
 ## 优化网络质量
 
-### ~~备案 上带国内CDN的企业版~~
+### ~~备案 上带国内 CDN 的企业版~~
 
 ## 借物表
 
