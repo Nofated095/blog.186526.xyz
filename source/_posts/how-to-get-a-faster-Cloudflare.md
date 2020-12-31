@@ -119,6 +119,14 @@ PS: 鉴于 `Cloudflare Pages` 目前处于 `Beta Access` 阶段 请阅读 [Cloud
 
 #### 使用 `NoModule/Module` 构建
 
+`ESM` 即 `ECMAScript modules`，是官方针对 `JavaScript` 的模块格式，在Chrome、Firefox及其他现代浏览器中，你可以通过 `<script type="module">` 来加载 `ESM` 代码。
+由于 `ESM` 在现代浏览器（支持 `ES6+` 特性）中需要使用特殊的 `type`，你可以通过 `<script type="module">` 来判断浏览器对于 `ES6+` 的支持。
+相对应的， `<script nomodule>` 不会在支持 `ES6+` 特性的浏览器上执行。
+
+为了兼容性，大部分项目会编写 `ES6+` js代码，使用 `Babel` 、`Polyfill` 等工具将ES6+代码转换成 `ES5` 代码，以获取更好的兼容性，但是这样也同时会增加最后打包过后的代码大小，我们可以通过使用该方法来大幅度减小在现代浏览器上的加载大小，同时换取同等的兼容性。
+
+你可以参考[「JDC | 京东设计中心 » 【译】如何在生产环境中部署ES2015+"」](https://jdc.jd.com/archives/4911)来尝试为项目部署 `Nomodule/Module` 支持。
+
 #### 缩小组件粒度
 
 #### 最小化 `HTML` `CSS` `JS`

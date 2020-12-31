@@ -1,3 +1,8 @@
+@media (min-width: 721px){
+    header{
+        padding-left: 2.6rem;
+    }
+}
 @media (max-width:768px){
     header .text-center{
         text-align:left !important;
@@ -14,6 +19,7 @@
     }
     header{
         padding-top: 30px;
+        padding-bottom: 0.4rem !important;
     }
     header .header-slogan{
         font-family: .9rem;
@@ -24,6 +30,9 @@
     header .header-span{
         padding-left: 0 !important;
         padding-top:.2rem !important;
+    }
+    header nav{
+        padding-top:.8rem !important;
     }
 }
 .display-on-mobile{
@@ -43,4 +52,7 @@ header img[alt=Avatar]{
     vertical-align:middle;
     border-radius:100%;
     width:100px;
+}
+header nav{
+    padding-top:0.8rem;
 }
