@@ -98,7 +98,9 @@ PS: 鉴于 `Cloudflare Pages` 目前处于 `Beta Access` 阶段 请阅读 [Cloud
 >
 > --翻译自 [`Cloudflare Workers documentation/Welcome - Cloudflare Docs`](https://developers.cloudflare.com/workers/)
 
-`Cloudflare Workers Sites` 是 `Cloudflare Workers` 的一个功能。将静态文件发布至 `KV Storage` [^KV_Storage] , `Workers` 从 `KV` 中取回数据并发送给客户端，来达到静态站点部署的效果。
+`Cloudflare Workers Sites` 是 `Cloudflare Workers` 的一个功能。将静态文件发布至 `KV Storage` , `Workers` 从 `KV` 中取回数据并发送给客户端，来达到静态站点部署的效果。
+
+> KV Storage : `Cloudflare Workers KV` 是全球性的，低延迟的键值数据存储。
 
 你可以在 [Cloudflare Docs](https://developers.cloudflare.com/workers/platform/sites/start-from-existing) 获得详细的部署教程。
 
@@ -129,13 +131,68 @@ PS: 鉴于 `Cloudflare Pages` 目前处于 `Beta Access` 阶段 请阅读 [Cloud
 
 #### 缩小组件粒度
 
-#### 最小化 `HTML` `CSS` `JS`
+在 `HTTP` 中， `Cache-Control` 作为缓存控制标头，可以管理数据的缓存状态。
+我们可以通过缩小组件粒度的方法，做到 `Base` 和 `APP` 的代码进行分离，仅在第一次时请求 `Base` 代码，对其缓存，降低对 `Server` 的请求量。
+
+你可以使用 `Webpack` 提供的 [代码分割](https://webpack.js.org/guides/code-splitting/) 对 `Base` 代码的分离。
+
+#### 最小化 `HTML` `CSS` `JavaScript`
+
+我们可以对这三种文件进行最小化操作，去除不必要的格式符、空白符、注释符，达到减小文件体积的效果。
+
+你可以通过本地处理以及Cloudflare分发时同时压缩的方式来对文件进行处理。
+
+对于本地处理，你可以使用 [`minify`](https://www.npmjs.com/package/minify) [`clean-css`](https://github.com/jakubpawlowicz/clean-css) [`HTMLMinifier`](https://www.npmjs.com/package/html-minifier)
+
+对于Cloudflare，你可以在 「 速度 - 优化 - `Auto Minify` 」来配置 `js` 压缩。
 
 ### 预请求
 
-#### 使用 Flying Pages
+对于大部分浏览器，你可以通过 `<link rel="prefetch">` 对请求进行预先加载。
+如果是 `CSS` `JavaScript` `Image` 文件，你也可以使用 `<link rel="preload">` 对文件进行请求。
+例如 `Google Fonts` 类的公共资源库，你也可以使用 `<link rel="preconnect">` 预先与该服务器进行链接。
+当然，你可以使用 `<link rel="dns-prefetch">` 对该域名预先进行 `DNS` 解析。
+
+#### 使用 [`Flying Pages`](https://github.com/gijo-varghese/flying-pages)
+
+`Flying Pages` 是一个优秀的预加载工具，会对当前可视区域以及鼠标悬浮的区域中的链接进行预先请求。
+
+你可以通过对 `Flying Pages` 文件的引用来使用其的功能。
+例如:
+
+``` html
+<script>
+window.FPConfig = {
+  delay: 0,//浏览器空闲多少秒后开始预加载
+  ignoreKeywords: [],//不进行预加载的链接，例 ["#", "/about"]
+  maxRPS: 3,//每秒最大加载数
+  hoverDelay: 50//鼠标悬浮后预加的延迟，毫秒单位
+};
+// 上方数值为默认值
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+```
+
+本站使用 `Flying Pages` 对文件进行预先缓存。
 
 #### 使用 Workbox 来改造客户端缓存
+
+> `Workbox` 是一组库，可以为 `PWA` （渐进式网络应用） 的生产环境提供支持。
+>
+> --翻译自 [`Workbox  |  Google Developers`](https://developers.google.com/web/tools/workbox)
+
+你可以使用 `Workbox` 对缓存进行完全的控制，并使用以下feature对网络进行管理。
+
+- `预缓存`
+- `运行环境缓存`
+- `缓存策略`
+- `请求旅游`
+- `后台同步`
+- `友好的调试信息`
+
+你可以在此阅读 [`Workbox` 文档](https://developers.google.com/web/tools/workbox/reference-docs/latest)
+
+本站已使用 `Workbox` 对缓存进行管理。
 
 ### 懒加载
 
@@ -151,5 +208,3 @@ PS: 鉴于 `Cloudflare Pages` 目前处于 `Beta Access` 阶段 请阅读 [Cloud
 
 [天下武功，唯快不破 —— 我是这样优化博客的 | Sukka's Blog](https://blog.skk.moe/post/how-to-make-a-fast-blog/)
 [关于 Cloudflare 自选节点的一些个人见解 | Puresys](https://www.puresys.net/3116.html)
-
-[^KV_Storage]:Cloudflare Workers KV是全球性的，低延迟的键值数据存储。
