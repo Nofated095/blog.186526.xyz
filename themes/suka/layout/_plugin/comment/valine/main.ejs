@@ -14,15 +14,15 @@
     var verify = '<%= theme.comment.valine_verify %>' === 'true';
     function valinenow(){
         var a = document.createElement("script"),d = document;
-        a.src = "https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js";
+        a.src = "https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js";
         (d.head || d.body).appendChild(a);
-        whenAvailable("Valine", () => {
+        whenAvailable("Waline", () => {
+            const Valine = Waline;
             new Valine({
                 el: '#vcomments',
                 notify: notify,
                 verify: verify,
-                appId: "<%= theme.comment.valine.leancloud_appId %>",
-                appKey: "<%= theme.comment.valine.leancloud_appKey %>",
+                serverURL: 'https://comment.186526.xyz',
                 placeholder: "<%= theme.comment.valine.placeholder %>",
                 meta: guest_info,
                 pageSize: '<%= theme.comment.valine.pageSize %>',
