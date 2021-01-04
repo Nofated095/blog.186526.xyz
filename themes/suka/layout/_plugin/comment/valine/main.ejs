@@ -14,7 +14,7 @@
     var verify = '<%= theme.comment.valine_verify %>' === 'true';
     function valinenow(){
         var a = document.createElement("script"),d = document;
-        a.src = "https://comment.186526.xyz/Waline.min.js";
+        a.src = "https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js";
         (d.head || d.body).appendChild(a);
         whenAvailable("Waline", () => {
             const Valine = Waline;
@@ -23,6 +23,7 @@
                 notify: notify,
                 verify: verify,
                 serverURL: 'https://comment.186526.xyz',
+                avatarCDN: 'https://comment.186526.xyz/avatar/',
                 placeholder: "<%= theme.comment.valine.placeholder %>",
                 meta: guest_info,
                 pageSize: '<%= theme.comment.valine.pageSize %>',
