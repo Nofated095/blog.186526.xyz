@@ -18,7 +18,7 @@ head:
   #   To get or check favicons visit: https://realfavicongenerator.net
   favicon:
     # You should use a image/x-icon type icon and configure it here.
-    ico: https://186526.xyz/pic/avatar-round.webp
+    ico: https://i.186526.xyz/avatar
     # 16x16 png
     small:
     # 32x32 png
@@ -69,7 +69,7 @@ uiux:
   bg_color: 
 
 img:
-  avatar: 'https://186526.xyz/pic/avatar-round.webp'
+  avatar: 'https://i.186526.xyz/avatar'
 
 # ---------------------------------------------------------------
 # Menu Settings
