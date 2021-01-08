@@ -703,8 +703,9 @@ a.category-link {
 #post-content .highlight span,
 #post-content .highlight code,
 #post-content pre {
-  font-family: 'Fira Code','Noto Sans SC',Consolas, "Panic Sans", "DejaVu Sans Mono",
-    "Bitstream Vera Sans Mono", Menlo, "Microsoft Yahei", monospace !important;
+  font-family: "Fira Code", "Noto Sans SC", Consolas, "Panic Sans",
+    "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Menlo, "Microsoft Yahei",
+    monospace !important;
   /* Override Spectre.css font-family for zh-CN */
 }
 
@@ -1543,4 +1544,60 @@ a.timeline-tile-title span:hover {
   100% {
     transform: rotate(360deg);
   }
+}
+.highlight {
+  color: #3b4351;
+  background: #f8f8f8;
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+}
+@media (prefers-color-scheme: dark){
+  .hightlight {
+    color:#a9b7c6!important;
+  }
+}
+.highlight .bullet,
+.highlight .literal,
+.highlight .number,
+.highlight .symbol {
+  color: #6897bb;
+}
+.highlight .deletion,
+.highlight .keyword,
+.highlight .selector-tag {
+  color: #cc7832;
+}
+.highlight .link,
+.highlight .template-variable,
+.highlight .variable {
+  color: #629755;
+}
+.highlight .comment,
+.highlight .quote {
+  color: grey;
+}
+.highlight .meta {
+  color: #bbb529;
+}
+.highlight .addition,
+.highlight .attribute,
+.highlight .string {
+  color: #6a8759;
+}
+.highlight .section,
+.highlight .title,
+.highlight .type {
+  color: #ffc66d;
+}
+.highlight .name,
+.highlight .selector-class,
+.highlight .selector-id {
+  color: #e8bf6a;
+}
+.highlight .emphasis {
+  font-style: italic;
+}
+.highlight .strong {
+  font-weight: 700;
 }
