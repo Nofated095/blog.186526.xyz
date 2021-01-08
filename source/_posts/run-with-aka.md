@@ -11,6 +11,7 @@ tags:
 ---
 
 > [AKA](https://github.com/186526/aka) (Also Known As) 是一个简洁，快速，前后端分离，运行于 `Cloudflare` 的短网址服务。
+> Demo: [186.rip](https://186.rip)
 
 AKA 分别有两个 `Worker` 组成，分别是其的的前端以及后端，你需要在本地安装 `node > 12` 的环境来支持其部署。
 
@@ -18,7 +19,7 @@ AKA 分别有两个 `Worker` 组成，分别是其的的前端以及后端，你
 
 ## 本次部署所用环境
 
-本次教程使用 `node v12.19.0` `wrangler 1.12.3` `Debian GNU/Linux 10 (buster)`
+本次教程使用 `node v12.19.0` `wrangler 1.12.3` `Debian GNU/Linux 10 (buster) in a Docker Container , The Host uses Archlinux`
 
 ## 安装所需工具
 

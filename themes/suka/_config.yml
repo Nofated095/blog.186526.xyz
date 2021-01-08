@@ -54,7 +54,7 @@ head:
 
 footer:
   copyright_since: '© 2020-2021'
-  custom_text: 'Hosted by <a href="https://vercel.com" rel="nofollow noopener noreferrer">Vercel</a> | Performance by <a href="https://vercel.com" rel="nofollow noopener noreferrer">Cloudflare</a>'
+  custom_text: 'Hosted at <a href="https://vercel.com" rel="nofollow noopener noreferrer">Vercel</a> | Performance by <a href="https://vercel.com" rel="nofollow noopener noreferrer">Cloudflare</a>'
 
 # ---------------------------------------------------------------
 # Customize Settings
