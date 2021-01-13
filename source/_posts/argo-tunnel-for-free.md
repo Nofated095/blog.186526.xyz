@@ -8,7 +8,7 @@ tags:
     - Website
     - Access
 ---
-> 之前看到了 `Cloudflare Blog` 更新了 `[「A free Argo Tunnel for your next project」](https://blog.cloudflare.com/a-free-argo-tunnel-for-your-next-project/)` 一文，最近终于有空闲时间，搭建一个测试一下
+> 之前看到了 `Cloudflare Blog` 更新了 `[「A free Argo Tunnel for your next project」](https://blog.cloudflare.com/a-free-argo-tunnel-for-your-next-project/)` 一文，最近终于有空闲时间，搭建一个测试一下。
 
 <!--more-->
 
