@@ -20,7 +20,7 @@ tags:
 >
 > --翻译自 [`Argo Tunnel -- Cloudflare Docs`](https://developers.cloudflare.com/argo-tunnel/)
 
-用人话理解 -> 可以用 `NAT`机子通过 `Argo Tunnel` 来穿透任意端口，并且还可以享受到 `Argo Smart Routing` 技术，极大幅度优化了回源速度，还有一大堆网络攻击保护技术也可以被启用。
+用人话理解 -> 可以用 `NAT` 机子通过 `Argo Tunnel` 来穿透任意端口，并且还可以享受到 `Argo Smart Routing` 技术，极大幅度优化了回源速度，还有一大堆网络攻击保护技术也可以被启用。
 
 这不得爽死吗（
 
@@ -80,4 +80,4 @@ cloudflared login
     cloudflared tunnel --hostname <tunnelDomain> --hello-world
     ```
 
-3. 打开被 `Tunnel` 的域名，如果可以看到 `Congrats! You created a tunnel!` 一行，则说明你的执行成果，快去搞些有意思的事情吧（
+3. 打开被 `Tunnel` 的域名，如果可以看到 `Congrats! You created a tunnel!` 一行，则说明你的执行成功，快去搞些有意思的事情吧（
