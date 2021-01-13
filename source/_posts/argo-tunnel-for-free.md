@@ -8,7 +8,7 @@ tags:
     - Website
     - Access
 ---
-> 之前看到了 `Cloudflare Blog` 更新了 `[「A free Argo Tunnel for your next project」](https://blog.cloudflare.com/a-free-argo-tunnel-for-your-next-project/)` 一文，最近终于有空闲时间，搭建一个测试一下。
+> 之前看到了 `Cloudflare Blog` 更新了 [`「A free Argo Tunnel for your next project」`](https://blog.cloudflare.com/a-free-argo-tunnel-for-your-next-project/)`一文，最近终于有空闲时间，搭建一个测试一下。
 
 <!--more-->
 
@@ -51,14 +51,14 @@ tags:
 
 你可以参考[这里](https://github.com/cloudflare/cloudflared#installing-cloudflared)的文档。
 
-在 `macOS` 上安装:
+1. 在 `macOS` 上安装:
     - 在[这里](https://github.com/cloudflare/cloudflared/releases)下载releases来安装
     - 通过 `brew install cloudflare/cloudflare/cloudflared` 安装
 
-在 `Linux` 上安装:
+2. 在 `Linux` 上安装:
     - 参考[这里](https://developers.cloudflare.com/argo-tunnel/getting-started/installation#linux)进行安装
 
-在 `Windows` 上安装:
+3. 在 `Windows` 上安装:
     - 在[这里](https://github.com/cloudflare/cloudflared/releases)下载文件并打开当前路径的 `PowerShell` 备用
 
 ### Login
