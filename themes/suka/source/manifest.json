@@ -4,8 +4,8 @@
     "lang": "zh-CN",
     "start_url": "/",
     "display": "standalone",
-    "theme_color": "#2A2734",
-    "background_color": "#FBDBC4",
+    "theme_color": "#fff",
+    "background_color": "#fff",
     "icons": [
         {
             "src": "https://186526.xyz/pic/maskable.png",
