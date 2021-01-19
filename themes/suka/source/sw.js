@@ -97,42 +97,6 @@ routing.registerRoute(
     })
 );
 
-// shadow.elemecdn.com - cors enabled
-routing.registerRoute(
-    /.*shadow\.elemecdn\.com/,
-    new CacheFirst({
-        cacheName: 'static-immutable' + cacheSuffixVersion,
-        fetchOptions: {
-            mode: 'cors',
-            credentials: 'omit'
-        },
-        plugins: [
-            new ExpirationPlugin({
-                maxAgeSeconds: 30 * 24 * 60 * 60,
-                purgeOnQuotaError: true
-            })
-        ]
-    })
-);
-
-// unpkg.zhimg.com - cors enabled
-routing.registerRoute(
-    /.*unpkg\.zhimg\.com/,
-    new CacheFirst({
-        cacheName: 'static-immutable' + cacheSuffixVersion,
-        fetchOptions: {
-            mode: 'cors',
-            credentials: 'omit'
-        },
-        plugins: [
-            new ExpirationPlugin({
-                maxAgeSeconds: 30 * 24 * 60 * 60,
-                purgeOnQuotaError: true
-            })
-        ]
-    })
-);
-
 routing.registerRoute(
     /.*fonts\.googleapis\.com/,
     new CacheFirst({

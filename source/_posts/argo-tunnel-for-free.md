@@ -41,7 +41,7 @@ tags:
 
 ~~(因某些词语违反广告法，已经进行处理)~~
 
-相较于未启用前，`Argo Smart Routing`可以有效优化请求用时。
+相较于未启用前，`Argo Smart Routing` 可以有效优化请求用时。
 
 ## How
 

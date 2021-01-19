@@ -31,7 +31,7 @@ window.addEventListener('load', () => {
             });
         navigator.serviceWorker.addEventListener('controllerchange', () => {
             let d = document.querySelector("title");
-            d.innerText = "Refresh to update Service Worker - " + d.innerText;
+            d.innerText = "Need update Service Worker - " + d.innerText;
             //d=document.body;
             //d.innerHTML = `<div class="toast toast-primary">Service Worker已经更新 请刷新页面进行安装</div>` + d.innerHTML;
         });
@@ -43,15 +43,20 @@ window.addEventListener('load', () => {
         a.src = "https://www.googletagmanager.com/gtag/js?id=G-ENYRL7T64N";
         d.head.appendChild(a);
     }
-    if (navigator.connection.rtt <= 350 & navigator.connection.downlink >= 1) {
-        let d = document, url = "/css/fonts.min.css";
-        d.head.innerHTML += `<link rel="preload" href="${url}" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="${url}"></noscript>`;
+    if (navigator.connection.rtt <= 600 & navigator.connection.downlink >= 0.5) {
+        fontsInit();
+    }else{
+        setTimeout(fontsInit,10000);
     }
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-ENYRL7T64N');
 });
+let fontsInit = () => {
+    let d = document, url = "/css/fonts.min.css";
+    d.head.innerHTML += `<link rel="preload" href="${url}" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="${url}"></noscript>`;
+};
 let send = () => {
     whenAvailable("NProgress", () => {
         NProgress.inc();
@@ -83,4 +88,4 @@ let whenAvailable = (name, callback) => {
             window.setTimeout(arguments.callee, interval);
         }
     }, interval);
-}
+};

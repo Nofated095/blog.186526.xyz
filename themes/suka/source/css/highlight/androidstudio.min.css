@@ -5,9 +5,14 @@
   overflow-x: auto;
   padding: 0.5em;
 }
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme: dark) {
   .hightlight {
-    color:#a9b7c6!important;
+    color: #a9b7c6 !important;
+  }
+  .highlight .deletion,
+  .highlight .keyword,
+  .highlight .selector-tag {
+    color: #ff9b00 !important;
   }
 }
 .highlight .bullet,
