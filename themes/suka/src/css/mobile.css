@@ -1,12 +1,19 @@
-@media (min-width: 721px){
-    header{
-        padding-left: 2.6rem;
+@media (max-width: 481px) {
+    header .text-center{
+        text-align:left !important;
+        padding: .2rem .8rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 28.4rem;
+    }
+    header {
+        padding: 4.8rem 0.8rem 2.6rem;
     }
 }
 @media (max-width:768px){
     header .text-center{
-        text-align:left !important;
-        padding: .2rem .8rem;
+        max-width: 33.5rem;
     }
     header .header-title{
         margin: 0px;
@@ -18,8 +25,9 @@
         width: 120px !important;
     }
     header{
+        padding-bottom:1rem!important;
         padding-top: 30px;
-        padding-bottom: 0.4rem !important;
+        padding-bottom: 0.4rem;
     }
     header .header-slogan{
         font-family: .9rem;

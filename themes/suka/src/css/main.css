@@ -194,9 +194,6 @@ header .divider {
   font-size: 0.8rem;
 }
 @media (min-width: 481px) {
-  header {
-    padding: 4.8rem 0.8rem 2.6rem;
-  }
   .header-title {
     font-size: 1.4rem;
   }
