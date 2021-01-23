@@ -6,7 +6,8 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "build-cloudflare": "yarn;yarn --cwd ./themes/suka --production;hexo generate"
   },
   "hexo": {
     "version": "5.3.0"
@@ -28,6 +29,7 @@
     "hexo-server": "^2.0.0",
     "hexo-theme-landscape": "^0.0.3",
     "hexo-uglify": "^2.0.0",
-    "spectre.css": "^0.5.9"
+    "spectre.css": "^0.5.9",
+    "yarn": "^1.22.10"
   }
 }
