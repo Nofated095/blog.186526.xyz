@@ -45,8 +45,8 @@ window.addEventListener('load', () => {
     }
     if (navigator.connection.rtt <= 600 & navigator.connection.downlink >= 0.5) {
         fontsInit();
-    }else{
-        setTimeout(fontsInit,10000);
+    } else {
+        setTimeout(fontsInit, 10000);
     }
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -74,8 +74,8 @@ let suc = () => {
     gtag('js', new Date());
     gtag('config', 'G-ENYRL7T64N');
 };
-document.addEventListener('LoadValine',()=>{
-    if(document.querySelector("#vcomments")){
+document.addEventListener('LoadValine', () => {
+    if (document.querySelector("#vcomments")) {
         valinedo();
     }
 });
@@ -89,3 +89,10 @@ let whenAvailable = (name, callback) => {
         }
     }, interval);
 };
+globalThis.__BLOG__ = (() => new Object({
+    name: "186526's Blog",
+    use: "hexo@^5.0",
+}))();
+(function () {
+
+})();

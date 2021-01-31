@@ -4,6 +4,21 @@
     <%- partial('_partial/head/index') %>
 
     <body>
+        <script type="text/javascript">
+            var ms_ie = false;
+            var ua = window.navigator.userAgent;
+            var old_ie = ua.indexOf('MSIE ');
+            var new_ie = ua.indexOf('Trident/');
+                
+            if ((old_ie > -1) || (new_ie > -1)) {
+                ms_ie = true;
+            }
+                
+            if ( ms_ie ) {
+            document.body.innerHTML = '<div class="toast">去他妈的Internet Explorer，请使用现代浏览器访问该站点，例如<a href="http://aka.186526.xyz/Chrome">Chrome</a>、<a href="http://aka.186526.xyz/Firefox">Firefox</a>。</div>'+document.body.innerHTML;
+            }
+
+        </script>
             <% if (theme.comment.use === 'facebook') { %>
                 <% if ( (is_post()) ) { %>
                     <!-- Facebook SDK -->

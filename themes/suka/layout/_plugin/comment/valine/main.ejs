@@ -14,7 +14,7 @@
     var verify = '<%= theme.comment.valine_verify %>' === 'true';
     function valinenow(){
         var a = document.createElement("script"),d = document;
-        a.src = "https://cdn.jsdelivr.net/npm/@waline/client@0.12.2/dist/Waline.min.js";
+        a.src = "https://cdn.jsdelivr.net/npm/@waline/client@0.14.3/dist/Waline.min.js";
         (d.head || d.body).appendChild(a);
         whenAvailable("Waline", () => {
             const Valine = Waline;
