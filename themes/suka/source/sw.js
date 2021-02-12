@@ -1,7 +1,7 @@
-importScripts('https://cdn.jsdelivr.net/npm/workbox-cdn@5.1.3/workbox/workbox-sw.js');
+importScripts('https://cdn.jsdelivr.net/npm/workbox-cdn@5.1.4/workbox/workbox-sw.js');
 
 workbox.setConfig({
-    modulePathPrefix: 'https://cdn.jsdelivr.net/npm/workbox-cdn@5.1.3/workbox/'
+    modulePathPrefix: 'https://cdn.jsdelivr.net/npm/workbox-cdn@5.1.4/workbox/'
 });
 
 const { core, precaching, routing, strategies, expiration, cacheableResponse, backgroundSync } = workbox;
@@ -9,7 +9,7 @@ const { CacheFirst, NetworkFirst, NetworkOnly, StaleWhileRevalidate } = strategi
 const { ExpirationPlugin } = expiration;
 const { CacheableResponsePlugin } = cacheableResponse;
 
-const cacheSuffixVersion = '-210213b',
+const cacheSuffixVersion = '-210213c',
     // precacheCacheName = core.cacheNames.precache,
     // runtimeCacheName = core.cacheNames.runtime,
     maxEntries = 100;
@@ -28,7 +28,7 @@ self.addEventListener('activate', (event) => {
 
 
 core.setCacheNameDetails({
-    prefix: '186-blog',
+    prefix: '186blog',
     suffix: cacheSuffixVersion
 });
 
@@ -207,16 +207,8 @@ routing.registerRoute(
 
 /*
  * Default - Serve as it is
- * networkFirst
+ * StaleWhileRevalidate
  */
 routing.setDefaultHandler(
-    new StaleWhileRevalidate({
-        plugins: [
-            new ExpirationPlugin({
-                maxAgeSeconds: 60 * 15,
-                purgeOnQuotaError: true
-            })
-        ],
-        networkTimeoutSeconds: 3
-    })
+    new StaleWhileRevalidate()
 );
