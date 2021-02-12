@@ -9,7 +9,7 @@ const { CacheFirst, NetworkFirst, NetworkOnly, StaleWhileRevalidate } = strategi
 const { ExpirationPlugin } = expiration;
 const { CacheableResponsePlugin } = cacheableResponse;
 
-const cacheSuffixVersion = '-210213a',
+const cacheSuffixVersion = '-210213b',
     // precacheCacheName = core.cacheNames.precache,
     // runtimeCacheName = core.cacheNames.runtime,
     maxEntries = 100;
@@ -210,7 +210,13 @@ routing.registerRoute(
  * networkFirst
  */
 routing.setDefaultHandler(
-    new NetworkFirst({
+    new StaleWhileRevalidate({
+        plugins: [
+            new ExpirationPlugin({
+                maxAgeSeconds: 60 * 15,
+                purgeOnQuotaError: true
+            })
+        ],
         networkTimeoutSeconds: 3
     })
 );
