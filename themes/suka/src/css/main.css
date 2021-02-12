@@ -270,6 +270,7 @@ header .divider {
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+  border-radius: .5rem;
 }
 @media (min-width: 961px) {
   .post-entry .column-body {
@@ -364,6 +365,7 @@ header .divider {
   background-origin: padding-box;
   background-attachment: scroll;
   height: 12.36rem;
+  border-radius: 0.5rem;
 }
 @media screen and (min-width: 481px) {
   #post-card .card-image {

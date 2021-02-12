@@ -7,6 +7,7 @@ tags:
     - HowToRun
     - Website
     - Access
+thumbnail: https://cdn.jsdelivr.net/npm/real186pic@0.0.2/toc/argo-tunnel-for-free/tocpic.svg
 ---
 > 之前看到了 `Cloudflare Blog` 更新了 [`「A free Argo Tunnel for your next project」`](https://blog.cloudflare.com/a-free-argo-tunnel-for-your-next-project/) 一文，最近终于有空闲时间，搭建一个测试一下。
 
@@ -81,3 +82,44 @@ cloudflared login
     ```
 
 3. 打开被 `Tunnel` 的域名，如果可以看到 `Congrats! You created a tunnel!` 一行，则说明你的执行成功，快去搞些有意思的事情吧（
+
+### Run HTTP Tunnel
+
+既然我们已经成功运行了Demo，我们可以来搞一些有意思的东西，例如把http穿透出去
+
+1. 参考[#Run Hello World](#Run-Hello-World) 第一步对域名进行解析
+2. 执行下列命令来穿透该http服务
+
+    ```bash
+    cloudflared tunnel --hostname <tunnelDomain> --url <url>
+    ```
+
+3. 使用浏览器打开 `<tunnelDomain>` ，测试http服务是否被成功穿透
+
+### Run TCP Tunnel
+
+~~既然要追求刺激，就贯彻到底咯~~ 我们同样也可以通过 `Argo Tunnel` 对 TCP 请求进行转发
+`Argo Tunnel` 的 TCP 转发依赖于 Cloudflare Access ，你需要在服务端以及客户端运行 `Cloudflared` 来转发数据
+
+1. 参考[#Run Hello World](#Run-Hello-World) 第一步对域名进行解析
+2. 在服务端执行下列命令来启动一个tcp转发
+
+    ```bash
+    cloudflared tunnel --hostname <tunnelDomain> --url tcp://${host}:${port}
+    ```
+
+3. 在客户端进行登陆
+
+    ```bash
+    cloudflared login
+    ```
+
+4. 启动 `client` 侧的转发
+
+    ```bash
+    cloudflared access tcp --tunnel-host <tunnelDomain> --url tcp://0.0.0.0:${localport}
+    ```
+
+5. 访问本地的 `0.0.0.0:${localPort}` TCP转发就成功了
+
+> p.s. Cloudflare Access 现暂不支持 UDP 转发

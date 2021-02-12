@@ -66,27 +66,27 @@ tags:
    - 输入 `curl -I <your domain>`
    - 当出现类似一下情况 即表示配置成功
 
-```text
-C:\Users\186526>curl -I https://imagedl.186526.xyz
-HTTP/1.1 200 OK
-Date: Sun, 04 Oct 2020 06:14:48 GMT
-Content-Type: text/html;charset=UTF-8
-Connection: keep-alive
-Set-Cookie: __cfduid=d785548bd40d709c98c06a349988227d71601792088; expires=Tue, 03-Nov-20 06:14:48 GMT; path=/; domain=.186526.xyz; HttpOnly; SameSite=Lax; Secure
-Vary: Accept-Encoding
-Cache-Control: max-age=86400
-CF-Cache-Status: HIT //该项表示命中
-Age: 54321
-cf-request-id: 0593d8b2f80000d346c4af3200000001
-Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?lkg-colo=12&lkg-time=1601792089"}],"group":"cf-nel","max_age":604800}
-NEL: {"report_to":"cf-nel","max_age":604800}
-Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-X-Content-Type-Options: nosniff
-Server: cloudflare
-CF-RAY: 5dccc3cb2d69d346-LAX
-alt-svc: h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400
-```
+   ```text
+   C:\Users\186526>curl -I https://imagedl.186526.xyz
+   HTTP/1.1 200 OK
+   Date: Sun, 04 Oct 2020 06:14:48 GMT
+   Content-Type: text/html;charset=UTF-8
+   Connection: keep-alive
+   Set-Cookie: __cfduid=d785548bd40d709c98c06a349988227d71601792088; expires=Tue, 03-Nov-20 06:14:48 GMT; path=/; domain=.186526.xyz; HttpOnly; SameSite=Lax; Secure
+   Vary: Accept-Encoding
+   Cache-Control: max-age=86400
+   CF-Cache-Status: HIT //该项表示命中
+   Age: 54321
+   cf-request-id: 0593d8b2f80000d346c4af3200000001
+   Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+   Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?lkg-colo=12&lkg-time=1601792089"}],"group":"cf-nel","max_age":604800}
+   NEL: {"report_to":"cf-nel","max_age":604800}
+   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+   X-Content-Type-Options: nosniff
+   Server: cloudflare
+   CF-RAY: 5dccc3cb2d69d346-LAX
+   alt-svc: h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400
+   ```
 
 2. 方法二:
    - 打开 Chrome Devtool

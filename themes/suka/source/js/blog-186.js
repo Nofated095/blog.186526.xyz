@@ -67,7 +67,7 @@ let suc = () => {
         NProgress.done();
     });
     whenAvailable("LazyLoad", () => {
-        new LazyLoad();
+        new LazyLoad(globalThis.lazyLoadOptions)
     });
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
