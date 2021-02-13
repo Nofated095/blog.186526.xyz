@@ -7,7 +7,8 @@ tags:
     - HowToRun
     - Website
     - Access
-thumbnail: https://cdn.jsdelivr.net/npm/real186pic@0.0.2/toc/argo-tunnel-for-free/tocpic.svg
+thumbnail: https://cdn.jsdelivr.net/npm/real186pic@0.0.3/toc/argo-tunnel-for-free/tocpic.svg
+#thumbnail: http://192.168.1.80:8080/tocpic.svg
 ---
 > 之前看到了 `Cloudflare Blog` 更新了 [`「A free Argo Tunnel for your next project」`](https://blog.cloudflare.com/a-free-argo-tunnel-for-your-next-project/) 一文，最近终于有空闲时间，搭建一个测试一下。
 
