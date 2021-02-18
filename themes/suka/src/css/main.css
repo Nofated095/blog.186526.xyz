@@ -1125,7 +1125,7 @@ a.timeline-tile-title span:hover {
 }
 .link-item .link-title {
   font-size: 0.9rem;
-  color: var(--link);
+  /*color: var(--link);*/
 }
 .link-item .link-descr {
   font-size: 0.65rem;
@@ -1251,4 +1251,16 @@ a.timeline-tile-title span:hover {
 }
 .highlight .strong {
   font-weight: 700;
+}
+
+.tile-content.link-content {
+  display: inline-block;
+  vertical-align: middle;
+}
+.link-img{
+  display: inline-block;
+}
+
+.link-list{
+  display: flow-root;
 }
