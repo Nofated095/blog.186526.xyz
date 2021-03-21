@@ -13,6 +13,18 @@
 "Puresys":
   url: "https://www.puresys.net"
   img: "https://gitee.com/clamowo/CLAMOWO/raw/master/img/%E5%A4%B4%E5%83%8F.jpg"
+"LcHnAn Blog":
+  url: "https://blog.lchnan.cn"
+  img: "https://blog.lchnan.cn/wp-content/uploads/2020/10/oops.jpg"
+  text: "或许是全世界第二好的博客"
+"科学ADV图书馆":
+  url: "https://sciadv.mcseekeri.top"
+  text: "一般普通科学ADV图书馆资源站"
+  img: https://sciadv.mcseekeri.top/favicon.ico
+"SkrShadow":
+  url: "https://blog.skrshadow.cn/"
+  text: "是红雨 awsl"
+  img: "https://s3.ax1x.com/2021/02/02/ymEYUx.jpg"
 "申请友链":
   url: "/links/new.html"
   img: "/img/suka-lazyload.gif"

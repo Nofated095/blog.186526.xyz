@@ -494,6 +494,7 @@ a.category-link {
 #post-card .card-footer.post-comment {
   padding: 1.5rem;
   background-color: var(--post-footer);
+  border-radius: 0 0 .5rem .5rem
 }
 #post-card .card-body {
   padding: 1.2rem 0;
@@ -1107,6 +1108,7 @@ a.timeline-tile-title span:hover {
   height: 3.8rem;
   width: 15rem;
   float: left;
+  border-radius: .5rem;
 }
 .link-item a,
 .link-item a:hover,
@@ -1263,4 +1265,7 @@ a.timeline-tile-title span:hover {
 
 .link-list{
   display: flow-root;
+}
+.link-img img {
+  border-radius: .5rem;
 }

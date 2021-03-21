@@ -64,3 +64,6 @@ header img[alt=Avatar]{
 header nav{
     padding-top:0.8rem;
 }
+a[id=more]{
+    display: none !important;
+}

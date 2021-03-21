@@ -157,7 +157,7 @@ routing.registerRoute(
             }),
         ]
     }),
-    'POST'
+    "POST"
 );
 
 routing.registerRoute(
@@ -169,8 +169,32 @@ routing.registerRoute(
             }),
         ]
     }),
-    'POST'
+    "POST"
 );
+
+routing.registerRoute(
+    new RegExp('https://comment.186526.xyz'),
+    new NetworkFirst({
+        plugins: [
+            new backgroundSync.BackgroundSyncPlugin('Comment_GET', {
+                maxRetentionTime: 12 * 60
+            }),
+        ]
+    }),
+    "GET"
+);
+
+routing.registerRoute(
+    new RegExp('https://analytics.google.com'),
+    new NetworkOnly({
+        plugins: [
+            new backgroundSync.BackgroundSyncPlugin('Google_Analytics_New', {
+                maxRetentionTime: 12 * 60
+            }),
+        ]
+    }),
+    "POST"
+)
 /*
  * Others img
  * Method: staleWhileRevalidate
