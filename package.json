@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "build-cloudflare": "yarn;yarn --cwd ./themes/suka --production;hexo generate;node cleancache.js",
+    "build-cloudflare": "yarn;yarn --cwd ./themes/suka;hexo generate;node cleancache.js",
     "vercel-build": "yarn build-cloudflare"
   },
   "hexo": {
