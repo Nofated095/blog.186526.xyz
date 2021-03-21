@@ -146,7 +146,7 @@ html_minifier:
   html_minifier: 
   collapseBooleanAttributes: true
   collapseWhitespace: true
-  ignoreCustomComments: [ !!js/regexp /^\s*more/]
+  #ignoreCustomComments: [ !!js/regexp /^\s*more/]
   removeComments: true
   removeEmptyAttributes: true
   removeScriptTypeAttributes: true
