@@ -1,6 +1,7 @@
 ---
 title: 友链申请
 date: 2020-12-19 23:08:35
+hide_license: true
 ---
 
 申请前提

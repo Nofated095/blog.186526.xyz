@@ -10,7 +10,8 @@
                 <%- theme.post.license %>
             <% } %></strong>
             <br>
-            <strong><%- __('post.permalink') %>&nbsp;:&nbsp;</strong><a href="<%= page.permalink %>"><%= page.permalink %></a>
+            <strong><%- __('post.permalink') %>&nbsp;:&nbsp;</strong><a href="<%= page.permalink %>"><%= page.permalink %></a><br>
+            <strong>获取 Markdown 源文件&nbsp;:&nbsp;</strong><a href="<%= `https://git.186526.xyz/186526/blog.186526.xyz/src/branch/main/source/_posts/${page.permalink.split('/')[4]}.md` %>"><%= `https://git.186526.xyz/186526/blog.186526.xyz/src/branch/main/source/_posts/${page.permalink.split('/')[4]}.md` %></a>
         </p>
     </blockquote>
 <% } %>
