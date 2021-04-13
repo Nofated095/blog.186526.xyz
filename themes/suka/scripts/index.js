@@ -21,6 +21,17 @@ require('../includes/generator/search')(hexo);
 
 // Filter
 require('../includes/filter/prism')(hexo);
+const { exec } = require('child_process');
+globalThis.exec = exec;
+exec('git rev-parse --short HEAD', (err, stdout, stderr) => {
+    globalThis.commitID = stdout;
+    console.log(`CommitID: ${stdout}`);
+})
+exec('git log --pretty=format:"%ct" HEAD -1',(err,stdout, stderr)=>{
+    globalThis.commitTime = stdout;
+    console.log(`CommitTime: ${stdout}`);
+
+})
 
 // Debug helper
 hexo.extend.helper.register('console', function () {
