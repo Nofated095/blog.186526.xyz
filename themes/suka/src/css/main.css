@@ -1123,7 +1123,7 @@ a.timeline-tile-title span:hover {
 }
 .link-item .link-content {
   padding-left: 0.6rem !important;
-  padding-right: 0.6rem !important;
+  /* padding-right: 0.6rem !important; */
 }
 .link-item .link-title {
   font-size: 0.9rem;
