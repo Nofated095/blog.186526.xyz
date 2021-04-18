@@ -85,7 +85,7 @@ thumbnail: https://cdn.jsdelivr.net/npm/real186pic@0.0.3/toc/pwa/pwa.svg
 
 该 `PWA` 简单、易读的名称，在没有足够空间时使用。
 
-#### `shart_url`
+#### `start_url`
 
 用户启动时所加载的URL。
 

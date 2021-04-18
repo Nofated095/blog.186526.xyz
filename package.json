@@ -27,14 +27,16 @@
     "hexo-html-minifier": "^1.0.0",
     "hexo-renderer-ejs": "^1.0.0",
     "hexo-renderer-marked": "^3.0.0",
-    "hexo-renderer-sass": "^0.4.0",
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
     "hexo-theme-landscape": "^0.0.3",
     "hexo-uglify": "^2.0.0",
     "node-fetch": "^2.6.1",
+    "node-sass": "^4.5.3",
     "postcss": "^8.2.8",
+    "postcss-css-variables": "^0.17.0",
     "postcss-load-config": "^3.0.1",
+    "postcss-nested": "^5.0.5",
     "spectre.css": "^0.5.9",
     "yarn": "^1.22.10"
   }

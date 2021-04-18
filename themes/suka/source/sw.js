@@ -9,7 +9,7 @@ const { CacheFirst, NetworkFirst, NetworkOnly, StaleWhileRevalidate } = strategi
 const { ExpirationPlugin } = expiration;
 const { CacheableResponsePlugin } = cacheableResponse;
 
-const cacheSuffixVersion = '-210413a',
+const cacheSuffixVersion = '-210418a',
     // precacheCacheName = core.cacheNames.precache,
     // runtimeCacheName = core.cacheNames.runtime,
     maxEntries = 100;
@@ -229,10 +229,24 @@ routing.registerRoute(
 
 
 
+routing.registerRoute(
+    /.*blog\.186526\.xyz/,
+    new StaleWhileRevalidate({
+        cacheName: 'blog-' + cacheSuffixVersion,
+    })
+);
+
+routing.registerRoute(
+    /.*localhost/,
+    new StaleWhileRevalidate({
+        cacheName: 'blog-' + cacheSuffixVersion,
+    })
+);
+
 /*
  * Default - Serve as it is
  * StaleWhileRevalidate
  */
 routing.setDefaultHandler(
-    new StaleWhileRevalidate()
+    new NetworkOnly()
 );

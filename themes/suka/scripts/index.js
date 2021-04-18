@@ -41,3 +41,16 @@ hexo.extend.helper.register('console', function () {
 if ((/3.[89]/).test(hexo.version)) {
     hexo.extend.filter.unregister('after_render:html', require('../../../node_modules/hexo/lib/plugins/filter/meta_generator'));
 }
+
+/**
+ * note.js | https://theme-next.org/docs/tag-plugins/note/
+ */
+
+function postNote(args, content) {
+  return `<div class="note ${args.join(" ")}">
+            ${hexo.render.renderSync({text: content, engine: "markdown"}).split("\n").join("")}
+          </div>`;
+}
+
+hexo.extend.tag.register("note", postNote, {ends: true});
+hexo.extend.tag.register("subnote", postNote, {ends: true});

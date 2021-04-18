@@ -124,11 +124,6 @@ feed:
   content_limit:
   content_limit_delim: " "
 
-node_sass:
-  includePaths:
-    - "node_modules"
-  outputStyle: compressed
-
 clean_css:
   exclude: 
     - "css/*.min.css"

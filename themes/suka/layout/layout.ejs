@@ -5,18 +5,38 @@
 
     <body>
         <script type="text/javascript">
-            var ms_ie = false;
-            var ua = window.navigator.userAgent;
-            var old_ie = ua.indexOf('MSIE ');
-            var new_ie = ua.indexOf('Trident/');
+
+            (function(){
+                function getBroswer(){
+                    var sys = {};
+                    var ua = navigator.userAgent.toLowerCase();
+                    var s;
+                    (s = ua.match(/edge\/([\d.]+)/)) ? sys.edge = s[1] :
+                    (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? sys.ie = s[1] :
+                    (s = ua.match(/msie ([\d.]+)/)) ? sys.ie = s[1] :
+                    (s = ua.match(/firefox\/([\d.]+)/)) ? sys.firefox = s[1] :
+                    (s = ua.match(/chrome\/([\d.]+)/)) ? sys.chrome = s[1] :
+                    (s = ua.match(/opera.([\d.]+)/)) ? sys.opera = s[1] :
+                    (s = ua.match(/version\/([\d.]+).*safari/)) ? sys.safari = s[1] : 0;
                 
-            if ((old_ie > -1) || (new_ie > -1)) {
-                ms_ie = true;
-            }
-                
-            if ( ms_ie ) {
-            document.body.innerHTML = '<div class="toast">去他妈的Internet Explorer，请使用现代浏览器访问该站点，例如<a href="http://aka.186526.xyz/Chrome">Chrome</a>、<a href="http://aka.186526.xyz/Firefox">Firefox</a>。</div>'+document.body.innerHTML;
-            }
+                    if (sys.edge) return { broswer : "Edge", version : sys.edge };
+                    if (sys.ie) return { broswer : "IE", version : sys.ie };
+                    if (sys.firefox) return { broswer : "Firefox", version : sys.firefox };
+                    if (sys.chrome) return { broswer : "Chrome", version : sys.chrome };
+                    if (sys.opera) return { broswer : "Opera", version : sys.opera };
+                    if (sys.safari) return { broswer : "Safari", version : sys.safari };
+                    
+                    return { broswer : "", version : "0" };
+                }
+    
+                var broswerUA = getBroswer();
+    
+                if ( broswerUA.broswer == "IE" ) {
+                    document.body.innerHTML = '<div class="toast">去他妈的Internet Explorer，请使用现代浏览器访问该站点，例如<a href="http://aka.186526.xyz/Chrome">Chrome</a>、<a href="http://aka.186526.xyz/Firefox">Firefox</a>。</div>'+document.body.innerHTML;
+                }else if(broswerUA.broswer == "chrome" && broswerUA.version <= 60 ){
+                    document.body.innerHTML = '<div class="toast">摆脱旧版Chrome，请使用新版<a href="http://aka.186526.xyz/Chrome">Chrome</a>访问该站点。</div>'+document.body.innerHTML;
+                }    
+            })()
 
         </script>
             <% if (theme.comment.use === 'facebook') { %>

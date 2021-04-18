@@ -38,12 +38,16 @@
     "cssnano": "^4.1.10",
     "node-prismjs": "0.1.2",
     "postcss": "^8.2.8",
+    "postcss-css-variables": "^0.17.0",
     "postcss-load-config": "^3.0.1",
+    "postcss-nested": "^5.0.5",
     "prismjs": "^1.17.1",
     "qr-image": "3.2.0",
     "spectre.css": "^0.5.9"
   },
-  "browserslist":{
-    "browsers": ["Chrome >= 49"]
+  "browserslist": {
+    "browsers": [
+      "Chrome >= 49"
+    ]
   }
 }

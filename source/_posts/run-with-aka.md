@@ -10,12 +10,19 @@ tags:
     - WebSite
 ---
 
+{% note warning %}
+### 警告
+
+AKA 将会在近期使用 [`sw2express`](https://git.186526.xyz/186526/sw2express) 进行重构。
+KV 所存储的数据类型将不会兼容于旧版，届时会发布数据转换脚本。
+
+{% endnote %}
+
 > [AKA](https://github.com/186526/aka) (Also Known As) 是一个简洁，快速，前后端分离，运行于 `Cloudflare` 的短网址服务。
+> <!-- more -->
 > Demo: [186.rip](https://186.rip)
 
 AKA 分别有两个 `Worker` 组成，分别是其的的前端以及后端，你需要在本地安装 `node > 12` 的环境来支持其部署。
-
-<!-- more -->
 
 ## 本次部署所用环境
 

@@ -1269,3 +1269,29 @@ a.timeline-tile-title span:hover {
 .link-img img {
   border-radius: .5rem;
 }
+
+#post-content .note {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: .4rem;
+  border: 1px solid var(--timeline);
+  border-left-width: .25em;
+}
+#post-content .note.default {
+  border-left-color: #777
+}
+#post-content .note.primary {
+  border-left-color: #6f42c1
+}
+#post-content .note.info {
+  border-left-color: #428bca
+}
+#post-content .note.success {
+  border-left-color: #5cb85c
+}
+#post-content .note.warning {
+  border-left-color: #f0ad4e
+}
+#post-content .note.danger {
+  border-left-color: #d9534f
+}
