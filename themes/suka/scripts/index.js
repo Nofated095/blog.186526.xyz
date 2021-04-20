@@ -1,5 +1,6 @@
+let getos = require('getos');
 async function main() {
-    const getos = require('getos');
+    let getos = require('getos');
     const { exec } = require('child_process');
     globalThis.exec = exec;
     exec('git rev-parse --short HEAD', (err, stdout, stderr) => {
@@ -57,6 +58,22 @@ require('../includes/filter/prism')(hexo);
 hexo.extend.helper.register('console', function () {
     console.log(arguments);
 });
+
+hexo.extend.helper.register('getver', function () {
+    return getos((e, os) => {
+        if (e) throw new Error(e);
+        if (os.os === "linux") {
+            if (os.release == undefined) {
+                globalThis.buildEnvironment = `${os.dist} @ Node.js ${process.version}`
+            } else {
+                globalThis.buildEnvironment = `${os.dist} ${os.release} @ Node.js ${process.version}`
+            }
+        } else {
+            globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
+        }
+        return globalThis.buildEnvironment;
+    })
+})
 
 if ((/3.[89]/).test(hexo.version)) {
     hexo.extend.filter.unregister('after_render:html', require('../../../node_modules/hexo/lib/plugins/filter/meta_generator'));
