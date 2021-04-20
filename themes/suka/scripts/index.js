@@ -1,4 +1,4 @@
-function main(){
+async function main(){
     const getos = require('getos');
     const { exec } = require('child_process');
     globalThis.exec = exec;
@@ -10,7 +10,7 @@ function main(){
         globalThis.commitTime = stdout;
         console.log(`CommitTime: ${stdout}`);
     })
-    getos((e,os)=>{
+    globalThis.buildEnvironment = await getos((e,os)=>{
     if(e) throw new Error(e);
     if(os.os === "linux"){
         if(os.release == undefined){
@@ -21,11 +21,9 @@ function main(){
     }else{
         globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
     }
-    console.log(`Running in ${globalThis.buildEnvironment}`);
+    console.log(`Running on ${globalThis.buildEnvironment}`);
     return globalThis.buildEnvironment;
 })}
-
-main();
 
 /* global hexo */
 
