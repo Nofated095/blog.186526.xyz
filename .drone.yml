@@ -23,3 +23,4 @@ steps:
       author_email: droneci@186526.xyz
       commit_message: "[Drone CI] Build Dist"
       path: "public/"
+      force: true
