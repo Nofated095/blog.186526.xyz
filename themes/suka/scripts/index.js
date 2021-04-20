@@ -33,7 +33,7 @@ exec('git log --pretty=format:"%ct" HEAD -1',(err,stdout, stderr)=>{
     console.log(`CommitTime: ${stdout}`);
 })
 
-getos((e,os)=>{
+globalThis.buildEnvironment = getos((e,os)=>{
     if(e) throw new Error(e);
     if(os.os === "linux"){
         if(os.release == undefined){
@@ -45,6 +45,7 @@ getos((e,os)=>{
         globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
     }
     console.log(`Running in ${globalThis.buildEnvironment}`);
+    return globalThis.buildEnvironment;
 })
 
 // Debug helper
