@@ -1,4 +1,16 @@
-function main(){getos((e,os)=>{
+function main(){
+    const getos = require('getos');
+    const { exec } = require('child_process');
+    globalThis.exec = exec;
+    exec('git rev-parse --short HEAD', (err, stdout, stderr) => {
+        globalThis.commitID = stdout;
+        console.log(`CommitID: ${stdout}`);
+    })
+    exec('git log --pretty=format:"%ct" HEAD -1',(err,stdout, stderr)=>{
+        globalThis.commitTime = stdout;
+        console.log(`CommitTime: ${stdout}`);
+    })
+    getos((e,os)=>{
     if(e) throw new Error(e);
     if(os.os === "linux"){
         if(os.release == undefined){
@@ -39,17 +51,6 @@ require('../includes/generator/search')(hexo);
 
 // Filter
 require('../includes/filter/prism')(hexo);
-const getos = require('getos');
-const { exec } = require('child_process');
-globalThis.exec = exec;
-exec('git rev-parse --short HEAD', (err, stdout, stderr) => {
-    globalThis.commitID = stdout;
-    console.log(`CommitID: ${stdout}`);
-})
-exec('git log --pretty=format:"%ct" HEAD -1',(err,stdout, stderr)=>{
-    globalThis.commitTime = stdout;
-    console.log(`CommitTime: ${stdout}`);
-})
 
 // Debug helper
 hexo.extend.helper.register('console', function () {
