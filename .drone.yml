@@ -15,7 +15,7 @@ steps:
     settings:
       ssh_key: 
         from_secret: ssh_key
-      remote: 
+      remote: ssh://git@direct-git.186526.xyz:10022/186526/build-blog.186526.xyz.git
       remote_name: git
       branch: master
       commit: true
