@@ -21,6 +21,7 @@ require('../includes/generator/search')(hexo);
 
 // Filter
 require('../includes/filter/prism')(hexo);
+const getos = require('getos');
 const { exec } = require('child_process');
 globalThis.exec = exec;
 exec('git rev-parse --short HEAD', (err, stdout, stderr) => {
@@ -30,7 +31,20 @@ exec('git rev-parse --short HEAD', (err, stdout, stderr) => {
 exec('git log --pretty=format:"%ct" HEAD -1',(err,stdout, stderr)=>{
     globalThis.commitTime = stdout;
     console.log(`CommitTime: ${stdout}`);
+})
 
+getos((e,os)=>{
+    if(e) throw new Error(e);
+    if(os.os === "linux"){
+        if(os.release == undefined){
+            globalThis.buildEnvironment = `${os.dist} @ Node.js ${process.version}`
+        }else{
+            globalThis.buildEnvironment = `${os.dist} ${os.release} @ Node.js ${process.version}`
+        }    
+    }else{
+        globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
+    }
+    console.log(`Running in ${globalThis.buildEnvironment}`);
 })
 
 // Debug helper

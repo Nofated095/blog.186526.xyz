@@ -1,0 +1,24 @@
+kind: pipeline
+type: docker
+name: build-dist
+
+steps:
+  - name: build
+    image: node:lts-buster
+    commands:
+    - apt-get update -y && apt-get install git -y
+    - yarn install
+    - yarn drone-build
+
+  - name: git-push
+    image: appleboy/drone-git-push
+    settings:
+      ssh_key: 
+        from_secret: ssh_key
+      remote: 
+      remote_name: git
+      branch: master
+      commit: true
+      author_name: Drone CI
+      author_email: droneci@186526.xyz
+      commit_message: "[Drone CI] Build Dist"
