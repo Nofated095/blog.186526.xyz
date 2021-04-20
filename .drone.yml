@@ -13,6 +13,8 @@ steps:
   - name: git-push
     image: appleboy/drone-git-push
     settings:
+      path: "public/"
+      force: true
       ssh_key: 
         from_secret: ssh_key
       remote: ssh://git@direct-git.186526.xyz:10022/186526/build-blog.186526.xyz.git
@@ -22,5 +24,3 @@ steps:
       author_name: Drone CI
       author_email: droneci@186526.xyz
       commit_message: "[Drone CI] Build Dist"
-      path: "public/"
-      force: true
