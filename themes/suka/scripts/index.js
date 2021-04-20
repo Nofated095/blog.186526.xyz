@@ -60,19 +60,23 @@ hexo.extend.helper.register('console', function () {
 });
 
 hexo.extend.helper.register('getver', function () {
-    return getos((e, os) => {
-        if (e) throw new Error(e);
-        if (os.os === "linux") {
-            if (os.release == undefined) {
-                globalThis.buildEnvironment = `${os.dist} @ Node.js ${process.version}`
+    if(require('fs').existsSync('/etc/system-release')) {
+        return getos((e, os) => {
+            if (e) throw new Error(e);
+            if (os.os === "linux") {
+                if (os.release == undefined) {
+                    globalThis.buildEnvironment = `${os.dist} @ Node.js ${process.version}`
+                } else {
+                    globalThis.buildEnvironment = `${os.dist} ${os.release} @ Node.js ${process.version}`
+                }
             } else {
-                globalThis.buildEnvironment = `${os.dist} ${os.release} @ Node.js ${process.version}`
+                globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
             }
-        } else {
-            globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
-        }
-        return globalThis.buildEnvironment;
-    })
+            return globalThis.buildEnvironment;
+        })    
+    }else{
+        return `Amazon Linux 2 (Karoo) @ Node.js ${process.version}`;
+    }
 })
 
 if ((/3.[89]/).test(hexo.version)) {
