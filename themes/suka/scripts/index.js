@@ -1,4 +1,4 @@
-async function main(){
+async function main() {
     const getos = require('getos');
     const { exec } = require('child_process');
     globalThis.exec = exec;
@@ -6,24 +6,27 @@ async function main(){
         globalThis.commitID = stdout;
         console.log(`CommitID: ${stdout}`);
     })
-    exec('git log --pretty=format:"%ct" HEAD -1',(err,stdout, stderr)=>{
+    exec('git log --pretty=format:"%ct" HEAD -1', (err, stdout, stderr) => {
         globalThis.commitTime = stdout;
         console.log(`CommitTime: ${stdout}`);
     })
-    globalThis.buildEnvironment = await getos((e,os)=>{
-    if(e) throw new Error(e);
-    if(os.os === "linux"){
-        if(os.release == undefined){
-            globalThis.buildEnvironment = `${os.dist} @ Node.js ${process.version}`
-        }else{
-            globalThis.buildEnvironment = `${os.dist} ${os.release} @ Node.js ${process.version}`
-        }    
-    }else{
-        globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
-    }
-    console.log(`Running on ${globalThis.buildEnvironment}`);
+    globalThis.buildEnvironment = await getos((e, os) => {
+        if (e) throw new Error(e);
+        if (os.os === "linux") {
+            if (os.release == undefined) {
+                globalThis.buildEnvironment = `${os.dist} @ Node.js ${process.version}`
+            } else {
+                globalThis.buildEnvironment = `${os.dist} ${os.release} @ Node.js ${process.version}`
+            }
+        } else {
+            globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
+        }
+        console.log(`Running on ${globalThis.buildEnvironment}`);
+        return globalThis.buildEnvironment;
+    })
     return globalThis.buildEnvironment;
-})}
+}
+main();
 
 /* global hexo */
 
@@ -64,10 +67,10 @@ if ((/3.[89]/).test(hexo.version)) {
  */
 
 function postNote(args, content) {
-  return `<div class="note ${args.join(" ")}">
-            ${hexo.render.renderSync({text: content, engine: "markdown"}).split("\n").join("")}
+    return `<div class="note ${args.join(" ")}">
+            ${hexo.render.renderSync({ text: content, engine: "markdown" }).split("\n").join("")}
           </div>`;
 }
 
-hexo.extend.tag.register("note", postNote, {ends: true});
-hexo.extend.tag.register("subnote", postNote, {ends: true});
+hexo.extend.tag.register("note", postNote, { ends: true });
+hexo.extend.tag.register("subnote", postNote, { ends: true });
