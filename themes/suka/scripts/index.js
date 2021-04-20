@@ -11,21 +11,28 @@ async function main() {
         globalThis.commitTime = stdout;
         console.log(`CommitTime: ${stdout}`);
     })
-    globalThis.buildEnvironment = await getos((e, os) => {
-        if (e) throw new Error(e);
-        if (os.os === "linux") {
-            if (os.release == undefined) {
-                globalThis.buildEnvironment = `${os.dist} @ Node.js ${process.version}`
-            } else {
-                globalThis.buildEnvironment = `${os.dist} ${os.release} @ Node.js ${process.version}`
-            }
-        } else {
-            globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
+    globalThis.buildEnvironment = (function () {
+        if(!(require('fs').existsSync('/etc/system-release'))) {
+            console.log(getos((e, os) => {
+                var a;
+                if (os.os === "linux") {
+                    if (os.release == undefined) {
+                        a = `${os.dist} @ Node.js ${process.version}`
+                    } else {
+                        a = `${os.dist} ${os.release} @ Node.js ${process.version}`
+                    }
+                } else {
+                    a = `${os.os} @ Node.js ${process.version}`;
+                }
+                setTimeout(function () {
+                    globalThis.buildEnvironment = a;
+                },100);
+            }));
+        }else{
+            return `Amazon Linux 2 (Karoo) @ Node.js ${process.version}`;
         }
-        console.log(`Running on ${globalThis.buildEnvironment}`);
-        return globalThis.buildEnvironment;
-    })
-    return globalThis.buildEnvironment;
+    })()
+    console.log(globalThis.buildEnvironment);
 }
 main();
 
@@ -59,25 +66,7 @@ hexo.extend.helper.register('console', function () {
     console.log(arguments);
 });
 
-hexo.extend.helper.register('getver', function () {
-    if(require('fs').existsSync('/etc/system-release')) {
-        return getos((e, os) => {
-            if (e) throw new Error(e);
-            if (os.os === "linux") {
-                if (os.release == undefined) {
-                    globalThis.buildEnvironment = `${os.dist} @ Node.js ${process.version}`
-                } else {
-                    globalThis.buildEnvironment = `${os.dist} ${os.release} @ Node.js ${process.version}`
-                }
-            } else {
-                globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
-            }
-            return globalThis.buildEnvironment;
-        })    
-    }else{
-        return `Amazon Linux 2 (Karoo) @ Node.js ${process.version}`;
-    }
-})
+hexo.extend.helper.register('getver', ()=>globalThis.buildEnvironment)
 
 if ((/3.[89]/).test(hexo.version)) {
     hexo.extend.filter.unregister('after_render:html', require('../../../node_modules/hexo/lib/plugins/filter/meta_generator'));
