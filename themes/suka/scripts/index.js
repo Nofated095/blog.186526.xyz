@@ -1,4 +1,22 @@
+function main(){getos((e,os)=>{
+    if(e) throw new Error(e);
+    if(os.os === "linux"){
+        if(os.release == undefined){
+            globalThis.buildEnvironment = `${os.dist} @ Node.js ${process.version}`
+        }else{
+            globalThis.buildEnvironment = `${os.dist} ${os.release} @ Node.js ${process.version}`
+        }    
+    }else{
+        globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
+    }
+    console.log(`Running in ${globalThis.buildEnvironment}`);
+    return globalThis.buildEnvironment;
+})}
+
+main();
+
 /* global hexo */
+
 
 // Welcome Message
 require('../includes/tasks/welcome');
@@ -31,21 +49,6 @@ exec('git rev-parse --short HEAD', (err, stdout, stderr) => {
 exec('git log --pretty=format:"%ct" HEAD -1',(err,stdout, stderr)=>{
     globalThis.commitTime = stdout;
     console.log(`CommitTime: ${stdout}`);
-})
-
-globalThis.buildEnvironment = getos((e,os)=>{
-    if(e) throw new Error(e);
-    if(os.os === "linux"){
-        if(os.release == undefined){
-            globalThis.buildEnvironment = `${os.dist} @ Node.js ${process.version}`
-        }else{
-            globalThis.buildEnvironment = `${os.dist} ${os.release} @ Node.js ${process.version}`
-        }    
-    }else{
-        globalThis.buildEnvironment = `${os.os} @ Node.js ${process.version}`;
-    }
-    console.log(`Running in ${globalThis.buildEnvironment}`);
-    return globalThis.buildEnvironment;
 })
 
 // Debug helper
