@@ -164,7 +164,7 @@ window.addEventListener("load", () => {
 
 由于在同一页面中，同时只能存在一个 `Service Worker`，所以我们需要考虑到 `Service Worker` 的更新情况。
 
-你可以通过监听 `navigator.serviceWorker` 的 `controllerchange` 时间来更新 `Service Worker`。
+你可以通过监听 `navigator.serviceWorker` 的 `controllerchange` 事件来更新 `Service Worker`。
 
 ```js
 window.addEventListener("load", () => {

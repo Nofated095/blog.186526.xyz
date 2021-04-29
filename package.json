@@ -3,16 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "init-build": "yarn;yarn --cwd ./themes/suka",
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "build-cloudflare": "yarn;yarn --cwd ./themes/suka;hexo generate;node cleancache.js",
-    "vercel-build": "yarn build-cloudflare",
-    "drone-build": "yarn;yarn --cwd ./themes/suka;hexo generate"
+    "build-cloudflare": "yarn build",
+    "vercel-build": "yarn build;node cleancache.js",
+    "drone-build": "yarn build"
   },
   "hexo": {
-    "version": "5.3.0"
+    "version": "5.4.0"
   },
   "dependencies": {
     "autoprefixer": "^10.2.5",

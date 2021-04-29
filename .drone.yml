@@ -7,13 +7,13 @@ steps:
     image: node:lts-buster
     commands:
     - apt-get update -y && apt-get install git -y
-    - yarn install
+    - yarn init-build
     - yarn drone-build
 
   - name: git-push
     image: appleboy/drone-git-push
     settings:
-      path: "public/"
+      path: "./public/"
       force: true
       ssh_key: 
         from_secret: ssh_key

@@ -26,13 +26,13 @@ async function main() {
                 }
                 setTimeout(function () {
                     globalThis.buildEnvironment = a;
+                    console.log(globalThis.buildEnvironment);
                 },100);
             }));
         }else{
             return `Amazon Linux 2 (Karoo) @ Node.js ${process.version}`;
         }
     })()
-    console.log(globalThis.buildEnvironment);
 }
 main();
 
