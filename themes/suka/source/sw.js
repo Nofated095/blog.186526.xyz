@@ -392,7 +392,7 @@ const StaleWhileRevalidateInstance = new StaleWhileRevalidate();
  */
 routing.registerRoute(
     // Cache image files
-    /.*\.(?:png|jpg|jpeg|svg|gif|webp)/,
+    /.*\.(?:png|jpg|jpeg|gif|webp)/,
     StaleWhileRevalidateInstance
 );
 
@@ -431,7 +431,12 @@ routing.registerRoute(
 
 
 routing.registerRoute(
-    new RegExp('https://img-shields-io.186526.xyz'),
+    /.*\.(?:svg)/,
+    new NetworkOnly()
+);
+
+routing.registerRoute(
+    /.*img-shields-io\.186526\.xyz/,
     new NetworkOnly()
 );
 
