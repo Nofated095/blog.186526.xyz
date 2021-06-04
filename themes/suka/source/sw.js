@@ -354,11 +354,12 @@ class StaleWhileRevalidate {
             fetchOptions: this._fetchOptions,
             plugins: this._plugins
         });
-        const responseClone = new Response(await response.blob(), {
-            status: response.status,
-            statusText: response.statusText,
+        const responseRealClone = response.clone();
+        const responseClone = new Response(await responseRealClone.blob(), {
+            status: responseRealClone.status,
+            statusText: responseRealClone.statusText,
             headers: {
-                ...Object.fromEntries(response.headers.entries()),
+                ...Object.fromEntries(responseRealClone.headers.entries()),
                 "server": '186526 Edge',
             }
         });
@@ -426,6 +427,12 @@ routing.registerRoute(
 routing.registerRoute(
     /.*localhost/,
     StaleWhileRevalidateInstance
+);
+
+
+routing.registerRoute(
+    new RegExp('https://img-shields-io.186526.xyz'),
+    new NetworkOnly()
 );
 
 /*
