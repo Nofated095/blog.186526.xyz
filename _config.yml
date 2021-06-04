@@ -133,7 +133,7 @@ uglify:
   output:
   compress:
   exclude:
-    - "js/*.js"
+    - "sw.js"
 
 html_minifier:
   exclude: 

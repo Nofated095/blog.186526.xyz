@@ -5,11 +5,11 @@ workbox.setConfig({
 });
 
 const { core, precaching, routing, strategies, expiration, cacheableResponse, backgroundSync } = workbox;
-const { CacheFirst, NetworkFirst, NetworkOnly, StaleWhileRevalidate } = strategies;
+const { CacheFirst, NetworkFirst, NetworkOnly } = strategies;
 const { ExpirationPlugin } = expiration;
 const { CacheableResponsePlugin } = cacheableResponse;
 
-const cacheSuffixVersion = '-210418a',
+const cacheSuffixVersion = '-210604a',
     // precacheCacheName = core.cacheNames.precache,
     // runtimeCacheName = core.cacheNames.runtime,
     maxEntries = 100;
@@ -195,6 +195,212 @@ routing.registerRoute(
     }),
     "POST"
 )
+
+const assert_js = core._private, cacheNames_js = core._private, cacheWrapper_js = core._private, fetchWrapper_js = core._private, getFriendlyURL_js = core._private, logger_js = core._private, WorkboxError_js = core._private;
+
+const cacheOkAndOpaquePlugin = {
+    /**
+     * Returns a valid response (to allow caching) if the status is 200 (OK) or
+     * 0 (opaque).
+     *
+     * @param {Object} options
+     * @param {Response} options.response
+     * @return {Response|null}
+     *
+     * @private
+     */
+    cacheWillUpdate: async ({
+        response
+    }) => {
+        if (response.status === 200 || response.status === 0) {
+            return response;
+        }
+
+        return null;
+    }
+};
+
+const messages = {
+    strategyStart: (strategyName, request) => `Using ${strategyName} to respond to '${getFriendlyURL_js.getFriendlyURL(request.url)}'`,
+    printFinalResponse: response => {
+        if (response) {
+            logger_js.logger.groupCollapsed(`View the final response here.`);
+            logger_js.logger.log(response || '[No response returned]');
+            logger_js.logger.groupEnd();
+        }
+    }
+};
+
+class StaleWhileRevalidate {
+    /**
+     * @param {Object} options
+     * @param {string} options.cacheName Cache name to store and retrieve
+     * requests. Defaults to cache names provided by
+     * [workbox-core]{@link module:workbox-core.cacheNames}.
+     * @param {Array<Object>} options.plugins [Plugins]{@link https://developers.google.com/web/tools/workbox/guides/using-plugins}
+     * to use in conjunction with this caching strategy.
+     * @param {Object} options.fetchOptions Values passed along to the
+     * [`init`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)
+     * of all fetch() requests made by this strategy.
+     * @param {Object} options.matchOptions [`CacheQueryOptions`](https://w3c.github.io/ServiceWorker/#dictdef-cachequeryoptions)
+     */
+    constructor(options = {}) {
+        this._cacheName = cacheNames_js.cacheNames.getRuntimeName(options.cacheName);
+        this._plugins = options.plugins || [];
+
+        if (options.plugins) {
+            const isUsingCacheWillUpdate = options.plugins.some(plugin => !!plugin.cacheWillUpdate);
+            this._plugins = isUsingCacheWillUpdate ? options.plugins : [cacheOkAndOpaquePlugin, ...options.plugins];
+        } else {
+            // No plugins passed in, use the default plugin.
+            this._plugins = [cacheOkAndOpaquePlugin];
+        }
+
+        this._fetchOptions = options.fetchOptions;
+        this._matchOptions = options.matchOptions;
+    }
+    /**
+     * This method will perform a request strategy and follows an API that
+     * will work with the
+     * [Workbox Router]{@link module:workbox-routing.Router}.
+     *
+     * @param {Object} options
+     * @param {Request|string} options.request A request to run this strategy for.
+     * @param {Event} [options.event] The event that triggered the request.
+     * @return {Promise<Response>}
+     */
+
+
+    async handle({
+        event,
+        request
+    }) {
+        const logs = [];
+
+        if (typeof request === 'string') {
+            request = new Request(request);
+        }
+
+        {
+            assert_js.assert.isInstance(request, Request, {
+                moduleName: 'workbox-strategies',
+                className: 'StaleWhileRevalidate',
+                funcName: 'handle',
+                paramName: 'request'
+            });
+        }
+
+        const fetchAndCachePromise = this._getFromNetwork({
+            request,
+            event
+        });
+
+        let response = await cacheWrapper_js.cacheWrapper.match({
+            cacheName: this._cacheName,
+            request,
+            event,
+            matchOptions: this._matchOptions,
+            plugins: this._plugins
+        });
+        let error;
+
+        if (response) {
+            {
+                logs.push(`Found a cached response in the '${this._cacheName}'` + ` cache. Will update with the network response in the background.`);
+            }
+
+            if (event) {
+                try {
+                    event.waitUntil(fetchAndCachePromise);
+                } catch (error) {
+                    {
+                        logger_js.logger.warn(`Unable to ensure service worker stays alive when ` + `updating cache for '${getFriendlyURL_js.getFriendlyURL(request.url)}'.`);
+                    }
+                }
+            }
+        } else {
+            {
+                logs.push(`No response found in the '${this._cacheName}' cache. ` + `Will wait for the network response.`);
+            }
+
+            try {
+                response = await fetchAndCachePromise;
+            } catch (err) {
+                error = err;
+            }
+        }
+
+        {
+            logger_js.logger.groupCollapsed(messages.strategyStart('StaleWhileRevalidate', request));
+
+            for (const log of logs) {
+                logger_js.logger.log(log);
+            }
+
+            messages.printFinalResponse(response);
+            logger_js.logger.groupEnd();
+        }
+
+        if (!response) {
+            throw new WorkboxError_js.WorkboxError('no-response', {
+                url: request.url,
+                error
+            });
+        }
+
+        return response;
+    }
+    /**
+     * @param {Object} options
+     * @param {Request} options.request
+     * @param {Event} [options.event]
+     * @return {Promise<Response>}
+     *
+     * @private
+     */
+
+
+    async _getFromNetwork({
+        request,
+        event
+    }) {
+        const response = await fetchWrapper_js.fetchWrapper.fetch({
+            request,
+            event,
+            fetchOptions: this._fetchOptions,
+            plugins: this._plugins
+        });
+        const responseClone = new Response(await response.blob(), {
+            status: response.status,
+            statusText: response.statusText,
+            headers: {
+                ...Object.fromEntries(response.headers.entries()),
+                "server": '186526 Edge',
+            }
+        });
+        const cachePutPromise = cacheWrapper_js.cacheWrapper.put({
+            cacheName: this._cacheName,
+            request,
+            response: responseClone,
+            event,
+            plugins: this._plugins
+        });
+
+        if (event) {
+            try {
+                event.waitUntil(cachePutPromise);
+            } catch (error) {
+                {
+                    logger_js.logger.warn(`Unable to ensure service worker stays alive when ` + `updating cache for '${getFriendlyURL_js.getFriendlyURL(request.url)}'.`);
+                }
+            }
+        }
+
+        return response;
+    }
+}
+
+const StaleWhileRevalidateInstance = new StaleWhileRevalidate();
 /*
  * Others img
  * Method: staleWhileRevalidate
@@ -203,7 +409,7 @@ routing.registerRoute(
 routing.registerRoute(
     // Cache image files
     /.*\.(?:png|jpg|jpeg|svg|gif|webp)/,
-    new StaleWhileRevalidate()
+    StaleWhileRevalidateInstance
 );
 
 /*
@@ -215,7 +421,7 @@ routing.registerRoute(
     // Cache CSS files
     /.*\.(css|js)/,
     // Use cache but update in the background ASAP
-    new StaleWhileRevalidate()
+    StaleWhileRevalidateInstance
 );
 
 /*
@@ -224,23 +430,19 @@ routing.registerRoute(
  */
 routing.registerRoute(
     '/sw.js',
-    new StaleWhileRevalidate()
+    StaleWhileRevalidateInstance
 );
 
 
 
 routing.registerRoute(
     /.*blog\.186526\.xyz/,
-    new StaleWhileRevalidate({
-        cacheName: 'blog-' + cacheSuffixVersion,
-    })
+    StaleWhileRevalidateInstance
 );
 
 routing.registerRoute(
     /.*localhost/,
-    new StaleWhileRevalidate({
-        cacheName: 'blog-' + cacheSuffixVersion,
-    })
+    StaleWhileRevalidateInstance
 );
 
 /*
