@@ -224,9 +224,6 @@ const messages = {
     strategyStart: (strategyName, request) => `Using ${strategyName} to respond to '${getFriendlyURL_js.getFriendlyURL(request.url)}'`,
     printFinalResponse: response => {
         if (response) {
-            logger_js.logger.groupCollapsed(`View the final response here.`);
-            logger_js.logger.log(response || '[No response returned]');
-            logger_js.logger.groupEnd();
         }
     }
 };
@@ -281,15 +278,6 @@ class StaleWhileRevalidate {
             request = new Request(request);
         }
 
-        {
-            assert_js.assert.isInstance(request, Request, {
-                moduleName: 'workbox-strategies',
-                className: 'StaleWhileRevalidate',
-                funcName: 'handle',
-                paramName: 'request'
-            });
-        }
-
         const fetchAndCachePromise = this._getFromNetwork({
             request,
             event
@@ -314,7 +302,6 @@ class StaleWhileRevalidate {
                     event.waitUntil(fetchAndCachePromise);
                 } catch (error) {
                     {
-                        logger_js.logger.warn(`Unable to ensure service worker stays alive when ` + `updating cache for '${getFriendlyURL_js.getFriendlyURL(request.url)}'.`);
                     }
                 }
             }
@@ -331,14 +318,11 @@ class StaleWhileRevalidate {
         }
 
         {
-            logger_js.logger.groupCollapsed(messages.strategyStart('StaleWhileRevalidate', request));
 
             for (const log of logs) {
-                logger_js.logger.log(log);
             }
 
             messages.printFinalResponse(response);
-            logger_js.logger.groupEnd();
         }
 
         if (!response) {
@@ -391,7 +375,6 @@ class StaleWhileRevalidate {
                 event.waitUntil(cachePutPromise);
             } catch (error) {
                 {
-                    logger_js.logger.warn(`Unable to ensure service worker stays alive when ` + `updating cache for '${getFriendlyURL_js.getFriendlyURL(request.url)}'.`);
                 }
             }
         }
