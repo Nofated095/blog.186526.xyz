@@ -9,7 +9,7 @@ const { CacheFirst, NetworkFirst, NetworkOnly } = strategies;
 const { ExpirationPlugin } = expiration;
 const { CacheableResponsePlugin } = cacheableResponse;
 
-const cacheSuffixVersion = '-210605b',
+const cacheSuffixVersion = '-210703a',
     // precacheCacheName = core.cacheNames.precache,
     // runtimeCacheName = core.cacheNames.runtime,
     maxEntries = 100;
