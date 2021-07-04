@@ -50,10 +50,8 @@
             valinenow();
         }
     }
-    document.dispatchEvent(new window.Event("LoadValine"));
-    valinedo();
     if(!window.whenAvailable){
-        let whenAvailable = function(name, callback){
+        window.whenAvailable = function(name, callback){
             var interval = 100;
             window.setTimeout(function () {
                 if (window[name]) {
@@ -64,4 +62,6 @@
             }, interval);
         }
     }
+    document.dispatchEvent(new window.Event("LoadValine"));
+    valinedo();
 </script>

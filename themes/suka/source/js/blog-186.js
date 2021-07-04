@@ -35,13 +35,13 @@
         return;
       }
   
-      if (!window.dataLayer) {
-        var d = document,
-            a = d.createElement("script");
-        a.async = true;
-        a.src = "https://www.googletagmanager.com/gtag/js?id=G-ENYRL7T64N";
-        d.head.appendChild(a);
-      }
+      (function(e,t,n,i,s,a,c){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)}
+      ;a=t.createElement(i);c=t.getElementsByTagName(i)[0];a.async=true;a.src=s
+      ;c.parentNode.insertBefore(a,c)
+      })(window,document,"galite","script","https://cdn.jsdelivr.net/npm/ga-lite@2/dist/ga-lite.min.js");
+
+      galite('create', 'UA-174554903-1', 'auto');
+      galite('send', 'pageview');
   
       if (typeof navigator.connection !== "undefined") {
         if (navigator.connection.rtt <= 600 & navigator.connection.downlink >= 0.5) {
@@ -53,14 +53,6 @@
         setTimeout(fontsInit, 1000);
       }
   
-      window.dataLayer = window.dataLayer || [];
-  
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-  
-      gtag('js', new Date());
-      gtag('config', 'G-ENYRL7T64N');
     });
   
     var fontsInit = function fontsInit() {
@@ -82,14 +74,6 @@
       whenAvailable("LazyLoad", function () {
         new LazyLoad(globalThis.lazyLoadOptions);
       });
-      window.dataLayer = window.dataLayer || [];
-  
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-  
-      gtag('js', new Date());
-      gtag('config', 'G-ENYRL7T64N');
     };
   
     document.addEventListener('LoadValine', function () {

@@ -92,7 +92,7 @@
     background-color: #252d38 !important;
   }
   .v[data-class="v"] .vsys,
-  .v[data-class="v"] .vtime {
+  .v[data-class="v"] .vtime ,.v[data-class=v] .status-bar, .v[data-class=v] .veditor, .v[data-class=v] .vinput, .v[data-class=v] p, .v[data-class=v] pre code{
     color: hsla(0, 0%, 100%, 0.86) !important;
   }
   .bg-gray {
