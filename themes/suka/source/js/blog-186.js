@@ -75,6 +75,9 @@
         new LazyLoad(globalThis.lazyLoadOptions);
       });
     };
+    window.addEventListener('unload', function() {
+      galite('send', 'timing', 'JS Dependencies', 'unload')
+    })
   
     document.addEventListener('LoadValine', function () {
       if (document.querySelector("#vcomments")) {
