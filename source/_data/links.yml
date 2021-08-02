@@ -14,9 +14,9 @@
   img: "https://blog.lchnan.cn/wp-content/uploads/2020/10/oops.jpg"
   text: "或许是全世界第二好的博客"
 "科学ADV图书馆":
-  url: "https://sciadv.mcseekeri.top"
+  url: "https://sciadv.top"
   text: "一般普通科学ADV图书馆资源站"
-  img: https://sciadv.mcseekeri.top/favicon.ico
+  img: "/img/suka-lazyload.gif"
 "SkrShadow":
   url: "https://blog.skrshadow.cn/"
   text: "是红雨 awsl"
@@ -33,6 +33,10 @@
   url: "https://blog.rvvc.im"
   img: "https://blog.rvvc.im/imgs/avatar.jpg"
   text: "一只咸鱼的日常"
+"火鸡面233的屑博客":
+  url: "https://www.haojunmei.top"
+  text: "[\"咕咕中学生\"]"
+  img: "https://cdn.haojunmei.top/usr/themes/images/haojunmei.png"
 "申请友链":
   url: "/links/new.html"
   img: "/img/suka-lazyload.gif"
