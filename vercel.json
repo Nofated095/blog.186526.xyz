@@ -12,7 +12,7 @@
                 "X-Served-By": "Sw2Express",
                 "X-Generate-By": "Drone CI"
             },
-            "dest": "https://blog.186526.xyz/shields.io/$1"
+            "dest": "https://img.shields.io/$1"
         },
         {
             "src": "/gen_204",
