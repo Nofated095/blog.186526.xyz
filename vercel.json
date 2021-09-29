@@ -1,7 +1,7 @@
 {
     "routes": [
         {
-            "src": "shields.io",
+            "src": "/shields.io/(.*)",
             "headers": {
                 "Cache-Control":"s-maxage=1209600, max-age=86400, public",
                 "X-Frame-Options":"SAMEORIGIN",
