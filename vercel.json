@@ -1,6 +1,20 @@
 {
     "routes": [
         {
+            "src": "shields.io",
+            "headers": {
+                "Cache-Control":"s-maxage=1209600, max-age=86400, public",
+                "X-Frame-Options":"SAMEORIGIN",
+                "Referrer-Policy":"same-origin",
+                "Content-Security-Policy":"default-src 'unsafe-inline' https: 'self' cdn.jsdelivr.net *.186526.xyz *.186526.top *.186stat.us fonts.gstatic.com *.googletagmanager.com *.google.com; img-src * data: 'unsafe-inline' ; media-src * 'unsafe-inline'",
+                "X-XSS-Protection": "1; mode=block",
+                "X-Powered-By": "Sw2Express",
+                "X-Served-By": "Sw2Express",
+                "X-Generate-By": "Drone CI"
+            },
+            "dest": "https://blog.186526.xyz/shields.io/$1"
+        },
+        {
             "src": "/gen_204",
             "status": 204,
             "headers": {
