@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 186526's Blog
-subtitle: "Just a blog"
+title: Nofated's Blog
+subtitle: "Forever you will be in my heart"
 description: ""
 keywords: "Blog,Frontend,node.js"
-author: "186526"
+author: "Nofated095"
 language: zh-CN
 timezone: "Asia/Shanghai"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://blog.186526.xyz
+url: https://blog.nof.moe
 root: /
 permalink: post/:title/
 permalink_defaults:
