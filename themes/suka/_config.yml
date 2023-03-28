@@ -61,7 +61,7 @@ footer:
 # ---------------------------------------------------------------
 uiux:
   # Muilt line slogan is supported.
-  slogan: '啥都不会的屑'
+  slogan: 'Forever you will be in my heart.'
   # For most link color except post color
   link_color: 
   primary_color: 
@@ -69,7 +69,7 @@ uiux:
   bg_color: 
 
 img:
-  avatar: 'https://i.186526.xyz/avatar'
+  avatar: 'https://cdn.nofated.win/avatar/256'
 
 # ---------------------------------------------------------------
 # Menu Settings
