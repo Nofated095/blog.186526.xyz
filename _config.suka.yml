@@ -18,7 +18,7 @@ head:
   #   To get or check favicons visit: https://realfavicongenerator.net
   favicon:
     # You should use a image/x-icon type icon and configure it here.
-    ico: https://i.186526.xyz/avatar
+    ico: https://cdn.nofated.win/avatars/256
     # 16x16 png
     small:
     # 32x32 png
@@ -69,7 +69,7 @@ uiux:
   bg_color: 
 
 img:
-  avatar: 'https://cdn.nofated.win/avatar/256'
+  avatar: 'https://cdn.nofated.win/avatar/64'
 
 # ---------------------------------------------------------------
 # Menu Settings
